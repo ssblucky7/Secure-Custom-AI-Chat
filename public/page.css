@@ -359,13 +359,12 @@ details > summary::-webkit-details-marker { display: none; }
 .footer-bottom a { color: #566070; text-decoration: none; }
 .footer-bottom a:hover { color: var(--muted); }
 .developer-credit {
-  display: flex; justify-content: center; align-items: center;
-  padding-top: 16px; margin-top: 0;
-  font-size: 12px; color: #3d4552;
-  border-top: 1px solid var(--border);
+  display: block;
+  padding-top: 10px; margin-top: 0;
+  font-size: 14px; font-weight: 700; color: var(--text);
 }
-.developer-credit a { color: #3d4552; text-decoration: none; transition: color 0.2s; }
-.developer-credit a:hover { color: var(--muted); }
+.developer-credit a { color: #7c6af7; text-decoration: underline; transition: color 0.2s; }
+.developer-credit a:hover { color: #a89cf9; }
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
