@@ -1,0 +1,27 @@
+{
+  "id": "/app",
+  "name": "Secure Custom AI Chat",
+  "short_name": "AI Chat",
+  "description": "Self-hosted, server-side proxied AI chat. Supports OpenAI, Anthropic, Groq, Ollama, and 12+ providers.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0b0d12",
+  "theme_color": "#0b0d12",
+  "icons": [
+    {"src":"/icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"/icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
+  ],
+  "shortcuts": [
+    {"name":"New chat","short_name":"New chat","url":"/app?new=1","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"Documentation","short_name":"Docs","url":"/docs","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]},
+    {"name":"FAQ","short_name":"FAQ","url":"/faq","icons":[{"src":"/icons/icon-192.png","sizes":"192x192"}]}
+  ],
+  "categories": ["productivity", "utilities"],
+  "screenshots": [
+    {"src":"/og-image.svg","sizes":"1200x630","type":"image/svg+xml","form_factor":"wide","label":"Secure Custom AI Chat desktop view"}
+  ]
+}

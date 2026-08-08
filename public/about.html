@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Secure Custom AI Chat</title>
+  <meta name="description" content="Secure Custom AI Chat is a self-hosted, server-side proxied chat interface supporting OpenAI, Anthropic, OpenRouter, Groq, Ollama and 12+ AI providers.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yourdomain.com/about">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="About — Secure Custom AI Chat">
+  <meta property="og:description" content="Self-hosted AI chat interface with server-side key protection. Supports 12+ providers including OpenAI, Anthropic, Groq, Ollama.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/about">
+  <meta property="og:image" content="https://yourdomain.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://yourdomain.com/og-image.svg">
+  <link rel="stylesheet" href="/page.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Secure Custom AI Chat",
+    "url": "https://yourdomain.com/about",
+    "description": "Learn about Secure Custom AI Chat — a self-hosted, open-source multi-provider AI chat interface.",
+    "isPartOf": { "@type": "WebSite", "url": "https://yourdomain.com", "name": "Secure Custom AI Chat" },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/" },
+        { "@type": "ListItem", "position": 2, "name": "About", "item": "https://yourdomain.com/about" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo" aria-hidden="true">✦</div>
+        Secure AI Chat
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/features">Features</a></li>
+        <li><a href="/providers">Providers</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/about" aria-current="page">About</a></li>
+        <li><a href="/app" class="nav-cta">Open App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-badge">About the Project</div>
+    <h1>A <span>secure, open</span> AI chat interface</h1>
+    <p>Secure Custom AI Chat is a self-hosted chat application that proxies requests to AI providers server-side, protecting your API keys and giving you full control over your AI conversations.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Open Chat App</a>
+      <a class="btn btn-secondary" href="/features">See All Features</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="content">
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value">12+</div>
+          <div class="stat-label">AI Providers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2</div>
+          <div class="stat-label">API Protocols</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">PWA</div>
+          <div class="stat-label">Installable App</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">Free</div>
+          <div class="stat-label">Open Source</div>
+        </div>
+      </div>
+
+      <span class="section-label">What It Is</span>
+      <h2 id="what-it-is">What is Secure Custom AI Chat?</h2>
+      <p>Secure Custom AI Chat is an open-source, self-hosted web application that provides a unified chat interface for interacting with large language models (LLMs) from multiple AI providers. It runs as a lightweight Node.js server that proxies requests to AI providers — meaning your API keys stay on the server and are never exposed to the browser.</p>
+      <p>The application works with any provider that supports the <strong>OpenAI-compatible API</strong> (chat/completions) or the <strong>Anthropic Messages API</strong>. This includes cloud providers like OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, and Mistral, as well as local models running via Ollama or LM Studio.</p>
+
+      <span class="section-label">Core Problem</span>
+      <h2 id="problem">What problem does it solve?</h2>
+      <p>Using AI APIs directly from the browser exposes your API key to anyone who inspects network requests. Most self-hosted chat interfaces require you to hardcode keys in frontend code or paste them into a URL.</p>
+      <p>Secure Custom AI Chat solves this by acting as a <strong>server-side proxy</strong>: the server receives your message, appends the API key, and forwards the request to the provider. The browser only ever communicates with your own server.</p>
+
+      <div class="alert alert-success">
+        <span class="alert-icon">🔒</span>
+        <div>In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), your API key is set once in the server environment and never leaves the server. Even if the frontend is compromised, no key is accessible.</div>
+      </div>
+
+      <span class="section-label">Use Cases</span>
+      <h2 id="use-cases">Who is it for?</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">👩‍💻</div>
+          <h3>Developers</h3>
+          <p>Test different AI models and providers from a single interface. Switch between OpenAI GPT, Claude, Groq, and local Ollama models without leaving your browser.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏢</div>
+          <h3>Teams &amp; Organizations</h3>
+          <p>Deploy a single instance with server-side API keys. Team members get AI access without needing individual API accounts or key management.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔐</div>
+          <h3>Privacy-Conscious Users</h3>
+          <p>Use AI with full transparency. No account required, no data sent to third-party services beyond the AI provider you choose. Chat history stays in your browser.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🏠</div>
+          <h3>Home Lab Users</h3>
+          <p>Connect to Ollama or LM Studio running on your local machine for fully private, offline-capable AI conversations with no API costs.</p>
+        </div>
+      </div>
+
+      <span class="section-label">Technical Overview</span>
+      <h2 id="architecture">How does it work?</h2>
+      <p>The application consists of two parts:</p>
+      <ul>
+        <li><strong>Backend (Node.js + Express)</strong> — Serves static files, handles API proxying, validates provider URLs, enforces rate limiting, and applies security headers.</li>
+        <li><strong>Frontend (Vanilla JavaScript PWA)</strong> — Single-page chat interface with real-time SSE streaming, local conversation history, provider configuration, and PWA support for installation.</li>
+      </ul>
+      <p>When you send a message:</p>
+      <ol>
+        <li>The frontend sends a <code>POST /api/chat</code> request to your server with the message, model, and settings.</li>
+        <li>The server validates the provider URL (SSRF protection), builds the appropriate API payload, and forwards it to the AI provider using streaming.</li>
+        <li>The server streams the provider's SSE response back to the browser in a normalized format.</li>
+        <li>The frontend renders the streamed tokens in real-time using <code>requestAnimationFrame</code>.</li>
+      </ol>
+
+      <span class="section-label">Technology</span>
+      <h2 id="tech-stack">Technology Stack</h2>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-icon">⚙️</div>
+          <div class="feature-content">
+            <h3>Node.js + Express</h3>
+            <p>Lightweight backend using native Node.js fetch. No heavy frameworks. Runs on any Node.js 18+ environment.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌐</div>
+          <div class="feature-content">
+            <h3>Vanilla JavaScript</h3>
+            <p>No frontend framework dependencies. Pure browser APIs for DOM manipulation, streaming, and PWA features.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-content">
+            <h3>Helmet + Rate Limiting</h3>
+            <p>Security headers via Helmet, rate limiting via express-rate-limit. SSRF protection via DNS resolution and IP validation.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-content">
+            <h3>Progressive Web App</h3>
+            <p>Service worker for offline shell caching. Web App Manifest for installability. Works on iOS, Android, and desktop.</p>
+          </div>
+        </div>
+      </div>
+
+      <span class="section-label">License &amp; Source</span>
+      <h2 id="license">Open Source</h2>
+      <p>Secure Custom AI Chat is open-source software available under the MIT License. You are free to self-host, modify, and deploy it for personal or commercial use.</p>
+      <p>The software is provided as-is without warranty. You are responsible for securing your deployment, including setting strong authentication if deploying publicly.</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="nav-brand" href="/">
+            <div class="nav-logo" aria-hidden="true">✦</div>
+            Secure AI Chat
+          </a>
+          <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/features">Features</a></li>
+            <li><a href="/providers">Providers</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

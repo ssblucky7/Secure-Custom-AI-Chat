@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Secure Custom AI Chat — a self-hosted, server-side proxied interface for OpenAI, Anthropic, Groq, Ollama, and 12+ AI providers.">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:title" content="Secure Custom AI Chat — App">
+  <meta property="og:description" content="Self-hosted AI chat with server-side API key protection. Supports OpenAI, Anthropic, Groq, Ollama, and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="/og-image.svg">
+  <title>Chat — Secure Custom AI Chat</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="canonical" href="https://yourdomain.com/app">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Secure Custom AI Chat",
+    "url": "https://yourdomain.com/app",
+    "applicationCategory": "CommunicationApplication",
+    "operatingSystem": "Any",
+    "description": "Self-hosted, server-side proxied AI chat interface supporting OpenAI, Anthropic, Groq, Ollama, and 12+ providers."
+  }
+  </script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#prompt">Skip to message input</a>
+
+  <div class="app" id="app">
+    <aside class="sidebar" id="sidebar" aria-label="Chat navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">✦</div>
+        <div class="brand-copy">
+          <strong>Secure AI Chat</strong>
+          <span>Self-hosted · Multi-provider</span>
+        </div>
+        <button class="icon-btn sidebar-close" id="sidebarClose" type="button" aria-label="Close navigation">×</button>
+      </div>
+
+      <button class="new-chat" id="newChatBtn" type="button"><span aria-hidden="true">＋</span> New chat</button>
+
+      <div class="history">
+        <div class="history-header">
+          <span>Recent chats</span>
+          <button class="text-btn" id="clearChatsBtn" type="button">Clear</button>
+        </div>
+        <nav id="historyList" aria-label="Recent conversations"></nav>
+      </div>
+
+      <div class="sidebar-bottom">
+        <a href="/" class="settings-btn" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit"><span aria-hidden="true">🏠</span> Home</a>
+        <button class="settings-btn" id="settingsBtn" type="button"><span aria-hidden="true">⚙</span> AI Configure / Setup</button>
+      </div>
+    </aside>
+
+    <button class="sidebar-backdrop" id="sidebarBackdrop" type="button" aria-label="Close navigation" tabindex="-1"></button>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-left">
+          <button class="icon-btn mobile-menu" id="mobileMenu" type="button" aria-label="Open chat navigation" aria-controls="sidebar" aria-expanded="false">☰</button>
+          <div>
+            <span class="eyebrow">Model</span>
+            <div class="model-name" id="topModel">Loading...</div>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="export-btn install-btn" id="installBtn" type="button" hidden>Install app</button>
+          <button class="export-btn" id="exportBtn" type="button" title="Export current conversation">Export</button>
+          <div class="status" role="status" aria-live="polite">
+            <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+            <span id="statusText">Checking server</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="chat" id="chat" aria-label="Conversation">
+        <div class="messages" id="messages" role="log" aria-live="polite" aria-relevant="additions text">
+          <section class="welcome" id="welcome" aria-labelledby="welcomeTitle">
+            <div class="welcome-icon" aria-hidden="true">✦</div>
+            <h1 id="welcomeTitle">How can I help?</h1>
+            <p>Start a secure conversation with the AI model configured on this server.</p>
+            <div class="suggestions" aria-label="Suggested prompts">
+              <button type="button" data-prompt="Explain this topic in simple steps: ">Explain a topic</button>
+              <button type="button" data-prompt="Review and improve this code:\n\n">Improve code</button>
+              <button type="button" data-prompt="Create a practical step-by-step plan for: ">Make a plan</button>
+            </div>
+          </section>
+        </div>
+        <button class="scroll-bottom" id="scrollBottomBtn" type="button" aria-label="Scroll to latest message">↓</button>
+      </section>
+
+      <div class="input-area">
+        <div class="input-wrap">
+          <div class="composer" id="composer">
+            <label class="sr-only" for="prompt">Message your AI</label>
+            <textarea id="prompt" rows="1" maxlength="20000" placeholder="Message your AI..." aria-describedby="composerHelp"></textarea>
+            <div class="composer-bottom">
+              <span class="composer-info" id="composerHelp">Enter to send · Shift+Enter for a new line</span>
+              <span class="character-count" id="characterCount">0 / 20,000</span>
+              <button class="stop-btn" id="stopBtn" type="button" hidden>Stop</button>
+              <button class="send-btn" id="sendBtn" type="button" aria-label="Send message" disabled>↑</button>
+            </div>
+          </div>
+          <p class="disclaimer">AI can make mistakes. Verify important information.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="settings-dialog" id="settingsDialog" aria-labelledby="settingsTitle">
+    <form method="dialog" class="modal-box" id="settingsForm">
+      <div class="modal-header">
+        <div class="modal-header-content">
+          <span class="eyebrow">Provider Configuration</span>
+          <h2 id="settingsTitle">AI Configure / Setup</h2>
+        </div>
+        <button class="icon-btn close" value="cancel" type="submit" aria-label="Close settings">×</button>
+      </div>
+
+      <div class="security-note">
+        <strong>Universal provider setup</strong>
+        <p>Choose an API protocol and preset, or enter a custom compatible endpoint. Configuration is saved on this device.</p>
+      </div>
+
+      <div class="settings-grid">
+        <div class="field">
+          <label for="protocol">API Protocol</label>
+          <select id="protocol" name="protocol">
+            <option value="openai">OpenAI Compatible</option>
+            <option value="anthropic">Anthropic Messages</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="providerPreset">Provider preset</label>
+          <select id="providerPreset" name="providerPreset">
+            <option value="custom">Custom provider</option>
+            <option value="zenmux-openai">ZenMux · OpenAI</option>
+            <option value="zenmux-anthropic">ZenMux · Anthropic</option>
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="openrouter">OpenRouter</option>
+            <option value="groq">Groq</option>
+            <option value="together">Together AI</option>
+            <option value="deepseek">DeepSeek</option>
+            <option value="mistral">Mistral AI</option>
+            <option value="ollama">Ollama / local</option>
+            <option value="lmstudio">LM Studio / local</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="providerUrl">Base URL</label>
+        <input id="providerUrl" name="providerUrl" type="url" maxlength="500" autocomplete="url" spellcheck="false" placeholder="https://api.openai.com/v1" required>
+        <div class="help">Enter the provider base URL, for example https://api.openai.com/v1. A complete chat endpoint is also supported.</div>
+        <output class="endpoint-preview" id="endpointPreview"></output>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <div class="password-row">
+          <input id="apiKey" name="apiKey" type="password" maxlength="1000" autocomplete="off" spellcheck="false" placeholder="Enter your provider API key">
+          <button class="secondary-btn reveal-key" id="revealKeyBtn" type="button" aria-label="Show API key">Show</button>
+        </div>
+        <div class="help">Stored in localStorage. Avoid using saved keys on shared devices.</div>
+      </div>
+
+      <div class="field">
+        <label for="model">Model</label>
+        <div class="model-row">
+          <input id="model" name="model" type="text" list="modelOptions" maxlength="200" autocomplete="off" spellcheck="false" placeholder="provider/model-name" required>
+          <button class="secondary-btn" id="loadModelsBtn" type="button">Load models</button>
+        </div>
+        <datalist id="modelOptions"></datalist>
+        <div class="quick-models" id="quickModels" aria-label="Suggested models"></div>
+        <div class="help" id="modelHelp">Enter the exact provider model ID, or load available models.</div>
+      </div>
+
+      <div class="field">
+        <label for="systemPrompt">System prompt</label>
+        <textarea id="systemPrompt" name="systemPrompt" rows="4" maxlength="4000">You are a helpful AI assistant.</textarea>
+      </div>
+
+      <div class="settings-grid">
+        <div class="field">
+          <label for="temperature">Temperature</label>
+          <input id="temperature" name="temperature" type="number" min="0" max="2" step="0.1" value="0.7" inputmode="decimal">
+        </div>
+        <div class="field">
+          <label for="maxTokens">Maximum tokens</label>
+          <input id="maxTokens" name="maxTokens" type="number" min="1" max="8192" step="1" value="2048" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="model-selector-section">
+        <div class="section-header">
+          <label>Active Model</label>
+          <span class="section-badge" id="modelBadge">1 model</span>
+        </div>
+        <div class="model-chips" id="modelChips" aria-label="Selected models">
+          <div class="model-chip active" data-model="">
+            <span class="chip-icon">✦</span>
+            <span class="chip-text">Select a model above</span>
+            <button type="button" class="chip-remove" aria-label="Remove">×</button>
+          </div>
+        </div>
+        <div class="help">The first model in the list will be used for chats. Switch models anytime from the model selector.</div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="danger-btn" id="clearConfigBtn" type="button">Clear saved setup</button>
+        <button class="secondary-btn" id="testBtn" type="button">Test connection</button>
+        <button class="primary-btn" value="default" type="submit">Save setup</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="confirm-dialog" id="confirmDialog" aria-labelledby="confirmTitle">
+    <form method="dialog" class="confirm-box">
+      <h2 id="confirmTitle">Clear chat history?</h2>
+      <p>This will permanently remove saved conversations from this browser.</p>
+      <div class="modal-actions">
+        <button class="secondary-btn" value="cancel">Cancel</button>
+        <button class="danger-btn" value="confirm">Clear history</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

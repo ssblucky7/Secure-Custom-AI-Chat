@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supported AI Providers — Secure Custom AI Chat</title>
+  <meta name="description" content="Secure Custom AI Chat supports 12+ AI providers: OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama, LM Studio, and more.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yourdomain.com/providers">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Supported AI Providers — Secure Custom AI Chat">
+  <meta property="og:description" content="Works with OpenAI, Anthropic Claude, OpenRouter, Groq, DeepSeek, Mistral, Ollama, LM Studio, and any OpenAI-compatible endpoint.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/providers">
+  <meta property="og:image" content="https://yourdomain.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/page.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Supported AI Providers — Secure Custom AI Chat",
+    "url": "https://yourdomain.com/providers",
+    "description": "Complete list of AI providers supported by Secure Custom AI Chat, including OpenAI, Anthropic, OpenRouter, Groq, Ollama, and more.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Providers", "item": "https://yourdomain.com/providers" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo" aria-hidden="true">✦</div>
+        Secure AI Chat
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/features">Features</a></li>
+        <li><a href="/providers" aria-current="page">Providers</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/app" class="nav-cta">Open App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-badge">AI Providers</div>
+    <h1>Works with <span>12+ AI providers</span></h1>
+    <p>Connect to any OpenAI-compatible or Anthropic-compatible AI provider. Built-in presets make setup instant. Custom URL support works with any compatible endpoint.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Configure a Provider</a>
+      <a class="btn btn-secondary" href="/docs">Setup Guide</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="content">
+
+      <span class="section-label">Cloud Providers</span>
+      <h2 id="cloud">Cloud AI Providers</h2>
+      <p>These providers require an API key. Select a preset in the settings dialog and enter your API key to get started.</p>
+
+      <table class="provider-table" aria-label="Cloud AI providers">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Protocol</th>
+            <th>Base URL</th>
+            <th>Suggested Models</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>ZenMux · OpenAI</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://zenmux.ai/api/v1</code></td>
+            <td>z-ai/glm-4.7-flash-free, deepseek/deepseek-v4-flash-free</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>ZenMux · Anthropic</strong></td>
+            <td><span class="badge badge-orange">Anthropic</span></td>
+            <td><code>https://zenmux.ai/api/anthropic</code></td>
+            <td>anthropic/claude-sonnet-4.5, anthropic/claude-opus-4.5</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>OpenAI</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://api.openai.com/v1</code></td>
+            <td>gpt-4.1-mini, gpt-4o-mini, gpt-4o</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>Anthropic</strong></td>
+            <td><span class="badge badge-orange">Anthropic</span></td>
+            <td><code>https://api.anthropic.com</code></td>
+            <td>claude-sonnet-4-5, claude-haiku-4-5, claude-opus-4</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>OpenRouter</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://openrouter.ai/api/v1</code></td>
+            <td>100+ models (load via "Load models")</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>Groq</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://api.groq.com/openai/v1</code></td>
+            <td>llama3-8b-8192, mixtral-8x7b-32768 (load models)</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>Together AI</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://api.together.xyz/v1</code></td>
+            <td>Load via "Load models"</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>DeepSeek</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://api.deepseek.com/v1</code></td>
+            <td>deepseek-chat, deepseek-reasoner</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mistral AI</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>https://api.mistral.ai/v1</code></td>
+            <td>Load via "Load models"</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span class="section-label">Local Providers</span>
+      <h2 id="local">Local AI Providers</h2>
+      <p>Run AI models on your own machine with no API costs and no data leaving your network. Requires setting <code>ALLOW_PRIVATE_PROVIDER_URLS=1</code> in your server's <code>.env</code> file.</p>
+
+      <table class="provider-table" aria-label="Local AI providers">
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Protocol</th>
+            <th>Default URL</th>
+            <th>Notes</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ollama</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>http://localhost:11434/v1</code></td>
+            <td>Free, local, supports Llama, Mistral, Gemma, and more. Requires Ollama installed.</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+          <tr>
+            <td><strong>LM Studio</strong></td>
+            <td><span class="badge badge-blue">OpenAI</span></td>
+            <td><code>http://localhost:1234/v1</code></td>
+            <td>GUI app for running local models with OpenAI-compatible server mode.</td>
+            <td><span class="badge badge-green">Built-in preset</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span class="section-label">Custom Providers</span>
+      <h2 id="custom">Custom Provider Support</h2>
+      <p>Any provider that supports the <strong>OpenAI chat/completions</strong> format or the <strong>Anthropic Messages API</strong> works with Secure Custom AI Chat.</p>
+      <p>To add a custom provider:</p>
+      <ol>
+        <li>Open the Settings dialog in the app.</li>
+        <li>Select <strong>Custom provider</strong> from the Provider preset dropdown.</li>
+        <li>Choose the appropriate <strong>API Protocol</strong> (OpenAI Compatible or Anthropic Messages).</li>
+        <li>Enter the <strong>Base URL</strong> for your provider (e.g., <code>https://your-litellm-proxy.com/v1</code>).</li>
+        <li>Enter your API key if required.</li>
+        <li>Enter or load the model ID.</li>
+        <li>Click <strong>Save setup</strong>.</li>
+      </ol>
+      <p>Custom providers that work well include: LiteLLM proxy, OpenLLM, LocalAI, text-generation-webui with OpenAI extension, and any self-hosted vLLM instance.</p>
+
+      <span class="section-label">Protocol Notes</span>
+      <h2 id="protocols">API Protocol Details</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🟢</div>
+          <h3>OpenAI Compatible</h3>
+          <p>Uses <code>POST /v1/chat/completions</code> with a <code>Bearer</code> authorization header. Supports streaming via SSE. Compatible with any provider that follows the OpenAI API spec.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🟠</div>
+          <h3>Anthropic Messages</h3>
+          <p>Uses <code>POST /v1/messages</code> with an <code>x-api-key</code> header. The server normalizes Anthropic's <code>content_block_delta</code> SSE events to the same format as OpenAI streams, so the frontend handles both identically.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="nav-brand" href="/">
+            <div class="nav-logo" aria-hidden="true">✦</div>
+            Secure AI Chat
+          </a>
+          <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/features">Features</a></li>
+            <li><a href="/providers">Providers</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

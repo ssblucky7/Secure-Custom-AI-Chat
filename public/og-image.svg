@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b0d12"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6d5dfc"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="rgba(118,103,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(11,13,18,0)"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Decorative glow blobs -->
+  <circle cx="200" cy="100" r="160" fill="#7667ff" opacity="0.06" filter="url(#blur)"/>
+  <circle cx="1000" cy="530" r="180" fill="#a855f7" opacity="0.06" filter="url(#blur)"/>
+
+  <!-- Border frame -->
+  <rect x="1" y="1" width="1198" height="628" rx="20" fill="none" stroke="#2a3240" stroke-width="2"/>
+
+  <!-- Logo icon -->
+  <rect x="80" y="200" width="72" height="72" rx="18" fill="url(#accent)"/>
+  <text x="116" y="247" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="34" font-weight="800" fill="white">✦</text>
+
+  <!-- Main title -->
+  <text x="80" y="330" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="52" font-weight="800" fill="#f5f7fa" letter-spacing="-2">Secure Custom AI Chat</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="392" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="400" fill="#9ba5b4">Self-hosted · Multi-provider · Server-side key protection</text>
+
+  <!-- Feature badges -->
+  <!-- Badge 1: OpenAI Compatible -->
+  <rect x="80" y="436" width="200" height="38" rx="10" fill="#171c26" stroke="#2a3240" stroke-width="1"/>
+  <text x="180" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#a59bff">OpenAI Compatible</text>
+
+  <!-- Badge 2: Anthropic Support -->
+  <rect x="294" y="436" width="200" height="38" rx="10" fill="#171c26" stroke="#2a3240" stroke-width="1"/>
+  <text x="394" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#a59bff">Anthropic Support</text>
+
+  <!-- Badge 3: PWA -->
+  <rect x="508" y="436" width="120" height="38" rx="10" fill="#171c26" stroke="#2a3240" stroke-width="1"/>
+  <text x="568" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#4ade80">PWA</text>
+
+  <!-- Badge 4: SSRF Protected -->
+  <rect x="642" y="436" width="168" height="38" rx="10" fill="#171c26" stroke="#2a3240" stroke-width="1"/>
+  <text x="726" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#4ade80">SSRF Protected</text>
+
+  <!-- Badge 5: Open Source -->
+  <rect x="824" y="436" width="148" height="38" rx="10" fill="#171c26" stroke="#2a3240" stroke-width="1"/>
+  <text x="898" y="460" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#fbbf24">Open Source</text>
+
+  <!-- URL hint bottom right -->
+  <text x="1120" y="590" text-anchor="end" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#3a4556">yourdomain.com</text>
+</svg>

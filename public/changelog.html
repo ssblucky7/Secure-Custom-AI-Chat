@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Changelog — Secure Custom AI Chat</title>
+  <meta name="description" content="Changelog for Secure Custom AI Chat — release history, new features, security fixes, and improvements.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yourdomain.com/changelog">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Changelog — Secure Custom AI Chat">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/changelog">
+  <meta property="og:image" content="https://yourdomain.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/page.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+      <ul class="nav-links" role="list">
+        <li><a href="/features">Features</a></li>
+        <li><a href="/providers">Providers</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/app" class="nav-cta">Open App</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="hero-badge">Release History</div>
+    <h1>What's <span>Changed</span></h1>
+    <p>All notable changes, new features, bug fixes, and security improvements to Secure Custom AI Chat.</p>
+  </header>
+  <main id="main">
+    <div class="content">
+
+      <div class="changelog-entry">
+        <div class="changelog-header">
+          <span class="changelog-version">v2.0.0</span>
+          <span class="changelog-date">2025-07</span>
+          <span class="badge badge-green">Latest</span>
+        </div>
+        <h2 id="v2-0-0">v2.0.0 — Major SEO &amp; Content Update</h2>
+        <div class="changelog-section">
+          <h3>✨ New</h3>
+          <ul>
+            <li>Full SEO landing site: <code>/features</code>, <code>/providers</code>, <code>/security</code>, <code>/faq</code>, <code>/docs</code>, <code>/about</code>, <code>/privacy</code>, <code>/terms</code>, <code>/changelog</code> pages.</li>
+            <li>Shared <code>page.css</code> stylesheet with dark theme, hero, cards, feature grid, FAQ accordion, provider table, alert boxes, and responsive nav.</li>
+            <li>OG image (<code>/og-image.svg</code>) for social sharing previews.</li>
+            <li>Structured data (JSON-LD) on all pages: WebSite, SoftwareApplication, FAQPage, AboutPage, BreadcrumbList.</li>
+            <li><code>sitemap.xml</code> listing all pages for search engine indexing.</li>
+            <li><code>robots.txt</code> with sitemap reference and crawl rules.</li>
+            <li>Breadcrumb navigation on all SEO pages.</li>
+            <li>FAQ page with expandable <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> accordion with structured data.</li>
+            <li>Providers page with full comparison table: protocol, base URL, suggested models, preset status.</li>
+            <li>Security page with layered security model documentation.</li>
+            <li>Docs page with complete installation, configuration, and deployment guide.</li>
+          </ul>
+        </div>
+        <div class="changelog-section">
+          <h3>🔒 Security</h3>
+          <ul>
+            <li>No security regressions. All existing server-side security features preserved.</li>
+            <li>New pages use <code>page.css</code> with no external dependencies.</li>
+            <li>Server routes for <code>.html</code> pages serve via Express static middleware, respecting existing CSP headers.</li>
+          </ul>
+        </div>
+        <div class="changelog-section">
+          <h3>♿ Accessibility</h3>
+          <ul>
+            <li>All new pages include skip links, <code>aria-current</code> on active nav items, semantic landmarks, and focus-visible outlines.</li>
+            <li>FAQ accordion uses native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> for keyboard accessibility without JavaScript.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="changelog-header">
+          <span class="changelog-version">v1.5.0</span>
+          <span class="changelog-date">2025-04</span>
+        </div>
+        <h2 id="v1-5-0">v1.5.0 — Provider Presets &amp; Model Chips</h2>
+        <div class="changelog-section">
+          <h3>✨ New</h3>
+          <ul>
+            <li>Provider preset dropdown with one-click configuration for ZenMux, OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama, and LM Studio.</li>
+            <li>Multi-model chip UI — add multiple model IDs, switch between them per conversation.</li>
+            <li>"Load models" button fetches available models from the provider's <code>/models</code> endpoint.</li>
+            <li>ZenMux as default provider preset with free model options.</li>
+            <li>Anthropic Messages API support with server-side SSE normalization.</li>
+          </ul>
+        </div>
+        <div class="changelog-section">
+          <h3>🐛 Fixed</h3>
+          <ul>
+            <li>Streaming no longer hangs on Anthropic <code>message_stop</code> events.</li>
+            <li>Model dropdown now correctly resets when provider preset changes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="changelog-header">
+          <span class="changelog-version">v1.4.0</span>
+          <span class="changelog-date">2025-02</span>
+        </div>
+        <h2 id="v1-4-0">v1.4.0 — PWA &amp; Offline Support</h2>
+        <div class="changelog-section">
+          <h3>✨ New</h3>
+          <ul>
+            <li>Service worker with app shell caching for offline loading.</li>
+            <li>Web App Manifest with shortcuts, icons, display mode, and theme color.</li>
+            <li>PWA install prompt detection and banner UI.</li>
+            <li>Safe-area inset CSS variables for notched mobile devices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="changelog-header">
+          <span class="changelog-version">v1.3.0</span>
+          <span class="changelog-date">2024-12</span>
+        </div>
+        <h2 id="v1-3-0">v1.3.0 — Security Hardening</h2>
+        <div class="changelog-section">
+          <h3>🔒 Security</h3>
+          <ul>
+            <li>SSRF protection with full private IP range blocking (IPv4 + IPv6).</li>
+            <li>DNS resolution pre-check for provider hostnames.</li>
+            <li>Prototype pollution sanitization on all incoming JSON bodies.</li>
+            <li>Secret redaction in error messages and server logs.</li>
+            <li>Request body size limit (2MB).</li>
+            <li>AbortController 60s timeout on all provider requests.</li>
+            <li>Rate limiting: 120/min API, 30/min chat.</li>
+            <li>Helmet security headers including CSP, X-Frame-Options, and Referrer-Policy.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="changelog-entry">
+        <div class="changelog-header">
+          <span class="changelog-version">v1.0.0</span>
+          <span class="changelog-date">2024-09</span>
+        </div>
+        <h2 id="v1-0-0">v1.0.0 — Initial Release</h2>
+        <div class="changelog-section">
+          <h3>✨ New</h3>
+          <ul>
+            <li>Server-side API key proxy (Express + Node.js native fetch).</li>
+            <li>Real-time SSE streaming with <code>requestAnimationFrame</code> rendering.</li>
+            <li>Conversation history in localStorage (up to 30 conversations).</li>
+            <li>Markdown rendering: headings, bold, italic, code blocks, lists, blockquotes.</li>
+            <li>Conversation export as Markdown.</li>
+            <li>System prompt configuration.</li>
+            <li>Regenerate response functionality.</li>
+            <li>Responsive dark theme UI.</li>
+            <li>Keyboard navigation and accessibility (ARIA, skip link, focus indicators).</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/features">Features</a></li>
+            <li><a href="/providers">Providers</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

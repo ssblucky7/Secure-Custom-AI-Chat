@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation — Secure Custom AI Chat</title>
+  <meta name="description" content="Installation, configuration, and deployment guide for Secure Custom AI Chat. Node.js setup, environment variables, reverse proxy, Docker, and Ollama integration.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yourdomain.com/docs">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Documentation — Secure Custom AI Chat">
+  <meta property="og:description" content="How to install, configure, and deploy Secure Custom AI Chat. Environment variables, reverse proxy, Docker, and local model setup.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/docs">
+  <meta property="og:image" content="https://yourdomain.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/page.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Secure Custom AI Chat — Documentation",
+    "url": "https://yourdomain.com/docs",
+    "description": "Installation, configuration, and deployment documentation for Secure Custom AI Chat.",
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yourdomain.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://yourdomain.com/docs" }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+      <ul class="nav-links" role="list">
+        <li><a href="/features">Features</a></li>
+        <li><a href="/providers">Providers</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/docs" aria-current="page">Docs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/app" class="nav-cta">Open App</a></li>
+      </ul>
+    </div>
+  </nav>
+  <header class="hero">
+    <div class="hero-badge">Documentation</div>
+    <h1>Installation &amp; <span>Configuration</span></h1>
+    <p>Complete guide to setting up, configuring, and deploying Secure Custom AI Chat on your own server.</p>
+  </header>
+  <main id="main">
+    <div class="content">
+
+      <span class="section-label">Requirements</span>
+      <h2 id="requirements">Requirements</h2>
+      <ul>
+        <li><strong>Node.js 18+</strong> — Uses native <code>fetch</code> and <code>crypto.randomUUID()</code>.</li>
+        <li><strong>npm 8+</strong> — For dependency installation.</li>
+        <li>An API key from at least one AI provider (or a local Ollama installation).</li>
+      </ul>
+
+      <span class="section-label">Quick Start</span>
+      <h2 id="quick-start">Quick Start</h2>
+      <pre><code># 1. Download or clone the project
+git clone https://github.com/youruser/secure-custom-ai-chat.git
+cd secure-custom-ai-chat
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your settings
+
+# 4. Start the server
+npm start
+
+# Open http://localhost:3000</code></pre>
+
+      <span class="section-label">Environment Variables</span>
+      <h2 id="env-vars">Environment Variables</h2>
+      <p>All configuration is done via environment variables in your <code>.env</code> file. Copy <code>.env.example</code> and fill in your values.</p>
+
+      <table class="provider-table" aria-label="Environment variables">
+        <thead>
+          <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>PORT</code></td>
+            <td><code>3000</code></td>
+            <td>TCP port the server listens on.</td>
+          </tr>
+          <tr>
+            <td><code>NODE_ENV</code></td>
+            <td><code>development</code></td>
+            <td>Set to <code>production</code> for production deployments.</td>
+          </tr>
+          <tr>
+            <td><code>AI_API_URL</code></td>
+            <td>—</td>
+            <td>Default provider base URL (e.g., <code>https://api.openai.com/v1</code>).</td>
+          </tr>
+          <tr>
+            <td><code>AI_API_KEY</code></td>
+            <td>—</td>
+            <td>Default server-side API key. Never sent to clients.</td>
+          </tr>
+          <tr>
+            <td><code>AI_MODEL</code></td>
+            <td>—</td>
+            <td>Default model ID (e.g., <code>gpt-4o-mini</code>).</td>
+          </tr>
+          <tr>
+            <td><code>AI_API_TYPE</code></td>
+            <td><code>openai</code></td>
+            <td>API protocol: <code>openai</code> or <code>anthropic</code>.</td>
+          </tr>
+          <tr>
+            <td><code>AI_MAX_TOKENS_LIMIT</code></td>
+            <td><code>8192</code></td>
+            <td>Max tokens per request (1–100,000). Enforced server and client.</td>
+          </tr>
+          <tr>
+            <td><code>ALLOW_USER_PROVIDERS</code></td>
+            <td><code>0</code></td>
+            <td>Set <code>1</code> to let users provide their own provider URL and API key.</td>
+          </tr>
+          <tr>
+            <td><code>ALLOW_PRIVATE_PROVIDER_URLS</code></td>
+            <td><code>0</code></td>
+            <td>Set <code>1</code> to allow localhost/private IP provider URLs (for Ollama dev).</td>
+          </tr>
+          <tr>
+            <td><code>TRUST_PROXY</code></td>
+            <td><code>0</code></td>
+            <td>Set <code>1</code> when running behind a reverse proxy (fixes rate-limit IP detection).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <span class="section-label">Example Configs</span>
+      <h2 id="examples">Example Configurations</h2>
+
+      <h3>OpenAI (server-side key)</h3>
+      <pre><code>AI_API_URL=https://api.openai.com/v1
+AI_API_KEY=sk-proj-...
+AI_MODEL=gpt-4o-mini
+AI_API_TYPE=openai
+ALLOW_USER_PROVIDERS=0</code></pre>
+
+      <h3>Anthropic (server-side key)</h3>
+      <pre><code>AI_API_URL=https://api.anthropic.com
+AI_API_KEY=sk-ant-...
+AI_MODEL=claude-sonnet-4-5
+AI_API_TYPE=anthropic
+ALLOW_USER_PROVIDERS=0</code></pre>
+
+      <h3>Ollama (local development)</h3>
+      <pre><code>AI_API_URL=http://localhost:11434/v1
+AI_API_KEY=ollama
+AI_MODEL=llama3
+AI_API_TYPE=openai
+ALLOW_PRIVATE_PROVIDER_URLS=1</code></pre>
+
+      <h3>User-configurable mode (users bring their own key)</h3>
+      <pre><code>ALLOW_USER_PROVIDERS=1
+# No AI_API_KEY or AI_API_URL required</code></pre>
+
+      <span class="section-label">Production Deployment</span>
+      <h2 id="production">Production Deployment</h2>
+
+      <h3>With nginx reverse proxy</h3>
+      <pre><code># nginx site config
+server {
+    listen 443 ssl;
+    server_name yourdomain.com;
+
+    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        # SSE streaming — disable buffering
+        proxy_buffering off;
+        proxy_read_timeout 120s;
+    }
+}</code></pre>
+      <p>Set <code>TRUST_PROXY=1</code> in your <code>.env</code> when using nginx.</p>
+
+      <h3>With Caddy (automatic HTTPS)</h3>
+      <pre><code># Caddyfile
+yourdomain.com {
+    reverse_proxy localhost:3000 {
+        flush_interval -1
+    }
+}</code></pre>
+
+      <h3>With PM2 (process manager)</h3>
+      <pre><code>npm install -g pm2
+pm2 start server.js --name "ai-chat" --env production
+pm2 save
+pm2 startup</code></pre>
+
+      <h3>With Docker</h3>
+      <pre><code># Dockerfile example
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]</code></pre>
+      <pre><code># docker-compose.yml
+version: '3.8'
+services:
+  ai-chat:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: .env
+    restart: unless-stopped</code></pre>
+
+      <span class="section-label">Ollama Integration</span>
+      <h2 id="ollama">Ollama Local Models</h2>
+      <p>To use Ollama for fully local AI with no API costs:</p>
+      <ol>
+        <li>Install Ollama from <a href="https://ollama.ai" rel="noopener noreferrer" target="_blank">ollama.ai</a>.</li>
+        <li>Pull a model: <code>ollama pull llama3</code></li>
+        <li>Ollama starts its API server at <code>http://localhost:11434</code> automatically.</li>
+        <li>Set <code>ALLOW_PRIVATE_PROVIDER_URLS=1</code> in your <code>.env</code>.</li>
+        <li>In the app settings, select the <strong>Ollama / local</strong> preset.</li>
+        <li>Click <strong>Load models</strong> to see available local models.</li>
+      </ol>
+      <div class="alert alert-warning">
+        <span class="alert-icon">⚠️</span>
+        <div>Only set <code>ALLOW_PRIVATE_PROVIDER_URLS=1</code> in trusted local development environments. Do not enable this on a public-facing production server.</div>
+      </div>
+
+      <span class="section-label">API Reference</span>
+      <h2 id="api">Server API Reference</h2>
+
+      <h3>POST /api/chat</h3>
+      <p>Stream a chat completion. Returns Server-Sent Events.</p>
+      <pre><code>// Request body
+{
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ],
+  "model": "gpt-4o-mini",
+  "maxTokens": 2048,
+  "temperature": 0.7,
+  // Only if ALLOW_USER_PROVIDERS=1:
+  "providerUrl": "https://api.openai.com/v1",
+  "apiKey": "sk-...",
+  "apiType": "openai"
+}
+
+// Response: text/event-stream
+data: {"choices":[{"delta":{"content":"Hi"}}]}
+data: {"choices":[{"delta":{"content":"!"}}]}
+data: [DONE]</code></pre>
+
+      <h3>GET /api/config</h3>
+      <p>Returns server configuration visible to clients (no secrets).</p>
+      <pre><code>// Response
+{
+  "allowUserProviders": false,
+  "hasServerKey": true,
+  "serverApiUrl": "https://api.openai.com/v1",
+  "serverApiType": "openai",
+  "serverModel": "gpt-4o-mini",
+  "maxTokensLimit": 8192
+}</code></pre>
+
+      <h3>POST /api/models</h3>
+      <p>Fetch available models from a provider.</p>
+      <pre><code>// Request body
+{
+  "providerUrl": "https://api.openai.com/v1",
+  "apiKey": "sk-..."  // Only if ALLOW_USER_PROVIDERS=1
+}
+
+// Response
+{
+  "models": [
+    { "id": "gpt-4o-mini", "name": "GPT-4o mini" },
+    ...
+  ]
+}</code></pre>
+
+    </div>
+  </main>
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/features">Features</a></li>
+            <li><a href="/providers">Providers</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

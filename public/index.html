@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Custom AI Chat — Self-Hosted Multi-Provider AI</title>
+  <meta name="description" content="Self-hosted, server-side proxied AI chat. Supports OpenAI, Anthropic, Groq, Ollama, and 12+ providers. Your API keys never leave your server.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://yourdomain.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta property="og:title" content="Secure Custom AI Chat">
+  <meta property="og:description" content="Self-hosted AI chat with server-side API key protection. Supports OpenAI, Anthropic, Groq, Ollama, and 12+ providers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/">
+  <meta property="og:image" content="https://yourdomain.com/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="/page.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Secure Custom AI Chat","url":"https://yourdomain.com/","description":"Self-hosted, server-side proxied AI chat supporting OpenAI, Anthropic, Groq, Ollama, and 12+ providers."}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+      <ul class="nav-links" role="list">
+        <li><a href="/features">Features</a></li>
+        <li><a href="/providers">Providers</a></li>
+        <li><a href="/security">Security</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/docs">Docs</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/app" class="nav-cta">Open App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-badge">Open Source · Self-Hosted · Free</div>
+    <h1>AI Chat with <span>Real Privacy</span></h1>
+    <p>A self-hosted chat interface that proxies every request through your own server. Your API keys never reach the browser.</p>
+    <div class="hero-actions">
+      <a href="/app" class="btn-primary">Open Chat App</a>
+      <a href="/docs" class="btn-secondary">Read the Docs</a>
+    </div>
+    <div class="hero-meta">Works with OpenAI · Anthropic · Groq · Ollama · OpenRouter · 8 more providers</div>
+  </header>
+
+  <main id="main">
+
+    <section class="section">
+      <div class="content">
+        <span class="section-label">Why Secure AI Chat</span>
+        <h2>Everything you need, nothing you don't</h2>
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-icon">🔒</div>
+            <h3>Server-side keys</h3>
+            <p>API keys live in your <code>.env</code> file and are never sent to the browser. Zero client-side exposure.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Streaming responses</h3>
+            <p>Real-time token streaming via Server-Sent Events. Fast, responsive, no polling.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>12+ providers</h3>
+            <p>OpenAI, Anthropic, Groq, Together AI, DeepSeek, Mistral, Ollama, LM Studio and more.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>Installable PWA</h3>
+            <p>Install as a native-feeling app on any device. Works offline for static assets.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🏠</div>
+            <h3>Fully self-hosted</h3>
+            <p>Runs on Node.js 18+. Deploy on any VPS, Raspberry Pi, or local machine in minutes.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>SSRF protection</h3>
+            <p>Strict DNS-level validation blocks server-side request forgery against private networks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="content">
+        <span class="section-label">Quick Start</span>
+        <h2>Up and running in 60 seconds</h2>
+        <pre><code>git clone https://github.com/youruser/secure-custom-ai-chat.git
+cd secure-custom-ai-chat
+npm install
+cp .env.example .env   # add your API key
+npm start              # open http://localhost:3000</code></pre>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/docs" class="btn-primary">Full setup guide</a>
+          <a href="/features" class="btn-secondary">All features</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="content">
+        <span class="section-label">Supported Providers</span>
+        <h2>Connect any OpenAI-compatible API</h2>
+        <div class="grid-4">
+          <div class="provider-chip">OpenAI</div>
+          <div class="provider-chip">Anthropic</div>
+          <div class="provider-chip">Groq</div>
+          <div class="provider-chip">OpenRouter</div>
+          <div class="provider-chip">Together AI</div>
+          <div class="provider-chip">DeepSeek</div>
+          <div class="provider-chip">Mistral AI</div>
+          <div class="provider-chip">Ollama</div>
+          <div class="provider-chip">LM Studio</div>
+          <div class="provider-chip">ZenMux</div>
+          <div class="provider-chip">Any OpenAI-compatible</div>
+          <div class="provider-chip">Any Anthropic-compatible</div>
+        </div>
+        <div style="margin-top:2rem">
+          <a href="/providers" class="btn-secondary">Provider details →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-cta">
+      <div class="content" style="text-align:center">
+        <h2>Ready to start?</h2>
+        <p>Open the chat app now or read the documentation to self-host your own instance.</p>
+        <div class="hero-actions" style="justify-content:center;margin-top:2rem">
+          <a href="/app" class="btn-primary">Open Chat App</a>
+          <a href="/docs" class="btn-secondary">Self-host guide</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul class="footer-links">
+            <li><a href="/features">Features</a></li>
+            <li><a href="/providers">Providers</a></li>
+            <li><a href="/security">Security</a></li>
+            <li><a href="/changelog">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul class="footer-links">
+            <li><a href="/docs">Documentation</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
