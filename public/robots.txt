@@ -1,5 +1,41 @@
+# robots.txt for https://ssblucky7.dev/
+# Updated to expose the XML sitemap and llms.txt discovery file.
+
 User-agent: *
 Allow: /
-Disallow: /api/
+Allow: /llms.txt
 
 Sitemap: https://ssblucky7.dev/sitemap.xml
+
+# AI and answer-engine crawlers are permitted to retrieve public content.
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Claude-SearchBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+
+User-agent: bingbot
+Allow: /
+Allow: /llms.txt

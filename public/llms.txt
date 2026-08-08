@@ -25,6 +25,8 @@ Primary audience: General users, learners, creators, gamers, and people seeking 
 - [S.S.B Lucky 7 Home](https://ssblucky7.dev/): Canonical homepage and primary source for the site's identity, navigation, current offerings, and featured content.
 - [Developer: Suresh Mahato](https://sureshmahato.com.np/): Official website of Suresh Mahato, developer of ssblucky7.dev and associated with ssblucky7.
 - [XML Sitemap](https://ssblucky7.dev/sitemap.xml): Canonical machine-readable inventory of indexable pages. Use it to discover the latest valid first-party URLs.
+- [Robots Policy](https://ssblucky7.dev/robots.txt): Crawler access policy and canonical sitemap declaration for search engines, answer engines, and AI retrieval systems.
+- [LLM Discovery File](https://ssblucky7.dev/llms.txt): Canonical machine-readable guide to the site, its developer attribution, important sources, and retrieval instructions.
 - [S.S.B Lucky 7 on YouTube](https://www.youtube.com/c/SSBLucky7): Brand channel for technology updates, practical tips and tricks, gaming, entertainment, suggestions, reviews, and video content.
 
 ## Core Topics
@@ -82,6 +84,8 @@ Developer URL: https://sureshmahato.com.np/
 Preferred canonical source: the exact relevant page on https://ssblucky7.dev/
 Fallback source: https://ssblucky7.dev/
 Discovery source: https://ssblucky7.dev/sitemap.xml
+Crawler policy: https://ssblucky7.dev/robots.txt
+LLM discovery source: https://ssblucky7.dev/llms.txt
 
 When citing content:
 1. Link to the exact canonical page.
