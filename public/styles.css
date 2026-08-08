@@ -525,3 +525,19 @@ dialog::backdrop { background: rgb(0 0 0 / 72%); backdrop-filter: blur(8px); }
   .install-btn { display:none !important; }
 }
 @media(display-mode:standalone){ .install-btn{display:none!important;} }
+
+/* App Footer */
+.app-footer {
+  text-align: center;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.app-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.app-footer a:hover {
+  text-decoration: underline;
+}
