@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Privacy Policy — Secure Custom AI Chat</title>
-  <meta name="description" content="Privacy policy for Secure Custom AI Chat. No accounts, no tracking, no server-side conversation storage. Chat history stays in your browser.">
+  <meta name="description" content="Privacy policy for Secure Custom AI Chat. Learn how your data is handled, stored, and protected.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/privacy">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Privacy Policy — Secure Custom AI Chat">
+  <meta property="og:description" content="Privacy policy for Secure Custom AI Chat — data handling and protection practices.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/privacy">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
-      <ul class="nav-links" role="list">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo" aria-hidden="true">✦</div>
+        Secure AI Chat
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -29,65 +37,84 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
   <header class="hero">
     <div class="hero-badge">Legal</div>
     <h1>Privacy <span>Policy</span></h1>
-    <p>Last updated: January 2025. This policy applies to the Secure Custom AI Chat software and any instance you self-host.</p>
+    <p>Last updated: August 2025. This policy describes how Secure Custom AI Chat handles your data.</p>
+    <div class="hero-actions">
+      <a class="btn btn-secondary" href="/terms">Terms of Service</a>
+    </div>
   </header>
+
   <main id="main">
     <div class="content">
+
       <div class="alert alert-success">
         <span class="alert-icon">🔒</span>
-        <div><strong>Short version:</strong> No accounts. No tracking. No server-side conversation storage. Your chat history lives only in your browser's localStorage.</div>
+        <div><strong>Privacy by design.</strong> Secure Custom AI Chat is built to minimize data collection. Chat history is stored locally in your browser. No data is sent to third-party analytics or tracking services.</div>
       </div>
 
-      <h2 id="data-collected">Data We Collect</h2>
-      <p>The Secure Custom AI Chat <strong>software itself</strong> does not collect, transmit, or store any personal data on behalf of the software project. As a self-hosted application, each deployment is independently operated.</p>
-      <p>The software server:</p>
+      <h2 id="data-collection">What data is collected</h2>
+      <p>Secure Custom AI Chat collects <strong>no personal data</strong> on the server. The application is designed to operate with zero server-side data retention:</p>
       <ul>
-        <li><strong>Does not</strong> log conversation content, messages, or AI responses.</li>
-        <li><strong>Does not</strong> create user accounts or require registration.</li>
-        <li><strong>Does not</strong> set cookies or use tracking pixels.</li>
-        <li><strong>Does not</strong> transmit usage data to any third party.</li>
-        <li><strong>Does not</strong> store your API keys in any database (keys are in-memory environment variables only).</li>
+        <li><strong>No account required</strong> — No registration, email, or password is needed</li>
+        <li><strong>No chat history on servers</strong> — All conversations are stored locally in your browser (IndexedDB)</li>
+        <li><strong>No analytics</strong> — No third-party tracking scripts or analytics are included</li>
+        <li><strong>No cookies</strong> — The application does not set cookies</li>
       </ul>
-      <p>Standard web server access logs may be generated by the Node.js process or your reverse proxy, containing request timestamps, HTTP method, path, status code, and IP address. These are standard infrastructure logs and do not contain conversation content.</p>
+      <p>The only data transmitted externally is to the AI provider you configure (e.g., OpenAI, Anthropic). This is governed by that provider's own privacy policy.</p>
 
-      <h2 id="conversation-data">Conversation Data</h2>
-      <p>Your conversation history is stored <strong>exclusively in your browser's localStorage</strong> under the key <code>secureCustomAIStateV1</code>. This data never leaves your device unless you explicitly export it.</p>
-      <p>When you send a message, it is transmitted to the server and forwarded to the AI provider you have configured (e.g., OpenAI, Anthropic). The server does not persist this data after the request completes. Your messages are subject to the privacy policy of your chosen AI provider.</p>
-
-      <h2 id="api-keys">API Keys</h2>
-      <p>In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), API keys are stored in server environment variables and never transmitted to clients.</p>
-      <p>In user-provider mode (<code>ALLOW_USER_PROVIDERS=1</code>), user-entered API keys are stored in browser localStorage. They are transmitted over HTTPS to the server with each chat request and are not logged or stored by the server.</p>
-
-      <h2 id="third-parties">Third-Party AI Providers</h2>
-      <p>When you use this application, your messages are sent to the AI provider you configure. Each provider has its own privacy policy governing how they handle your data:</p>
+      <h2 id="local-storage">Local data storage</h2>
+      <p>Conversation history, provider configuration, and user preferences are stored in your browser using:</p>
       <ul>
-        <li>OpenAI: <a href="https://openai.com/privacy" rel="noopener noreferrer" target="_blank">openai.com/privacy</a></li>
-        <li>Anthropic: <a href="https://www.anthropic.com/privacy" rel="noopener noreferrer" target="_blank">anthropic.com/privacy</a></li>
-        <li>OpenRouter: <a href="https://openrouter.ai/privacy" rel="noopener noreferrer" target="_blank">openrouter.ai/privacy</a></li>
-        <li>Groq: <a href="https://groq.com/privacy-policy/" rel="noopener noreferrer" target="_blank">groq.com/privacy-policy</a></li>
-        <li>Ollama (local): Data does not leave your machine.</li>
+        <li><strong>IndexedDB</strong> — For conversation history and message storage</li>
+        <li><strong>localStorage</strong> — For UI preferences (theme, sidebar state) and user-configured provider settings (when <code>ALLOW_USER_PROVIDERS=1</code>)</li>
+      </ul>
+      <p>This data remains on your device and is never transmitted to any server except the AI provider endpoint you explicitly configure.</p>
+
+      <h2 id="api-keys">API key handling</h2>
+      <p><strong>Server-side keys:</strong> In default mode, API keys are stored as environment variables on the server. They are never exposed to the browser, logged, or transmitted to any service other than the configured AI provider.</p>
+      <p><strong>User-configured keys:</strong> When <code>ALLOW_USER_PROVIDERS=1</code>, each user enters their own API key in the browser. These keys are stored in <code>localStorage</code> on the user's device and only sent to the provider endpoint the user configures. The proxy server never sees or stores these keys.</p>
+
+      <h2 id="third-party">Third-party services</h2>
+      <p>The application interacts with the following external services only when you configure them:</p>
+      <ul>
+        <li><strong>AI Providers</strong> — Messages and responses are sent to the API endpoint you configure (OpenAI, Anthropic, OpenRouter, Groq, Ollama, etc.). This is governed by each provider's terms and privacy policy.</li>
+        <li><strong>Service Worker</strong> — The PWA service worker caches the app shell for offline use. It does not transmit any data.</li>
+      </ul>
+      <p>No analytics, advertising, or tracking services are used.</p>
+
+      <h2 id="security">Security measures</h2>
+      <p>The application implements several security measures to protect your data:</p>
+      <ul>
+        <li>SSRF protection prevents requests to internal network addresses</li>
+        <li>Security headers (Helmet) protect against common web vulnerabilities</li>
+        <li>Rate limiting prevents abuse</li>
+        <li>API keys are never logged or exposed in client-side code</li>
       </ul>
 
-      <h2 id="children">Children's Privacy</h2>
-      <p>This software is not directed to children under 13. We do not knowingly collect information from children under 13.</p>
-
-      <h2 id="changes">Changes to This Policy</h2>
-      <p>As open-source software, this policy applies to the default configuration of the software. Operators who deploy the software may have additional policies for their specific deployments.</p>
+      <h2 id="changes">Changes to this policy</h2>
+      <p>We may update this privacy policy periodically. Any changes will be reflected in the "Last updated" date above. We encourage you to review this policy regularly.</p>
 
       <h2 id="contact">Contact</h2>
-      <p>For questions about privacy in the context of the open-source software, please open an issue in the project repository.</p>
+      <p>For questions about this privacy policy, please open an issue on the <a href="https://github.com/ssblucky7/Secure-Custom-AI-Chat" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>
+
     </div>
   </main>
+
   <footer class="site-footer" aria-label="Site footer">
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <a class="nav-brand" href="/">
+            <div class="nav-logo" aria-hidden="true">✦</div>
+            Secure AI Chat
+          </a>
           <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
         </div>
         <div class="footer-col">
@@ -116,11 +143,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

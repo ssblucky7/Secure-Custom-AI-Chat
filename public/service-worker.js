@@ -1,4 +1,4 @@
-const CACHE = 'secure-ai-chat-v5';
+const CACHE = 'secure-ai-chat-v6';
 const SHELL = [
   '/',
   '/index.html',

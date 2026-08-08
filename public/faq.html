@@ -2,113 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>FAQ — Secure Custom AI Chat</title>
-  <meta name="description" content="Frequently asked questions about Secure Custom AI Chat: setup, API keys, providers, security, pricing, and offline support.">
+  <meta name="description" content="Frequently asked questions about Secure Custom AI Chat: setup, providers, security, and troubleshooting.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/faq">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="FAQ — Secure Custom AI Chat">
-  <meta property="og:description" content="Answers to common questions about self-hosted AI chat, API key security, provider setup, and more.">
+  <meta property="og:description" content="Common questions about Secure Custom AI Chat setup, providers, security, and usage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/faq">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FAQ — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "name": "Secure Custom AI Chat — FAQ",
+    "name": "FAQ — Secure Custom AI Chat",
     "url": "https://ssblucky7.dev/faq",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ssblucky7.dev/" },
-        { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://ssblucky7.dev/faq" }
-      ]
-    },
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is Secure Custom AI Chat?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Secure Custom AI Chat is a self-hosted, open-source web application that provides a unified chat interface for interacting with AI models from multiple providers. It runs as a Node.js server that proxies requests to AI providers server-side, so your API keys are never exposed to the browser."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Secure Custom AI Chat free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The software is free and open-source under the MIT License. You only pay for the AI API usage charged by your chosen provider (OpenAI, Anthropic, etc.). Some providers like Ollama offer free local models with no API costs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does server-side API key protection work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In default mode (ALLOW_USER_PROVIDERS=0), you set your AI_API_KEY in the server's .env file. The key is stored only on the server and never sent to the browser. When the browser sends a chat request, the server appends the key before forwarding to the AI provider. The browser only communicates with your own server."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which AI providers does it support?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It supports any provider using the OpenAI-compatible API or the Anthropic Messages API. Built-in presets include: ZenMux, OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama (local), and LM Studio (local). You can also enter a custom provider URL."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it work offline?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The app shell (HTML, CSS, JavaScript, icons) is cached by the service worker and loads offline. However, sending AI chat messages requires an active internet connection to reach the AI provider. Chat history saved in localStorage is always accessible offline."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I install it?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Clone or download the repository, copy .env.example to .env and fill in your settings, run npm install, then start with node server.js or npm start. The server runs on port 3000 by default. See the full documentation at /docs for details."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is my conversation data private?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Conversation history is stored only in your browser's localStorage. Nothing is saved on the server. Your messages are sent to the AI provider you configure (OpenAI, Anthropic, etc.) subject to their privacy policies. The Secure Custom AI Chat server itself does not store, log, or retain your conversation content."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is it different from ChatGPT or Claude web?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ChatGPT and Claude are locked to their respective providers and require accounts. Secure Custom AI Chat is self-hosted, works with any compatible provider, requires no account, and gives you full control over your data and infrastructure. It also supports local models via Ollama."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use it with Ollama for fully local AI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Set ALLOW_PRIVATE_PROVIDER_URLS=1 in your .env file, then select the Ollama preset in settings (http://localhost:11434/v1). All requests are processed locally with no data leaving your network."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does it support mobile devices?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The interface is fully responsive from 320px mobile to wide desktop. You can install it as a PWA on iOS (Add to Home Screen) or Android for a native app-like experience with standalone display mode."
-        }
-      }
+      { "@type": "Question", "name": "How do I set up Secure Custom AI Chat?", "acceptedAnswer": { "@type": "Answer", "text": "Clone the repository, install dependencies with npm install, copy .env.example to .env, set your provider API key and base URL, then run npm start." } },
+      { "@type": "Question", "name": "Which AI providers are supported?", "acceptedAnswer": { "@type": "Answer", "text": "The app supports OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama, and LM Studio. Any provider with an OpenAI-compatible API or Anthropic Messages API is supported." } },
+      { "@type": "Question", "name": "Are my API keys safe?", "acceptedAnswer": { "@type": "Answer", "text": "In default mode, API keys are stored only on the server as environment variables and never sent to the browser. The browser only communicates with your proxy server." } },
+      { "@type": "Question", "name": "Can I use my own API key?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Set ALLOW_USER_PROVIDERS=1 to enable per-user provider configuration. Each user can enter their own API key and base URL, stored locally in their browser." } },
+      { "@type": "Question", "name": "Does this work offline?", "acceptedAnswer": { "@type": "Answer", "text": "The app shell is cached via a service worker and works offline for navigation. However, AI chat requires a network connection to stream responses from the provider." } }
     ]
   }
   </script>
@@ -122,7 +43,7 @@
         <div class="nav-logo" aria-hidden="true">✦</div>
         Secure AI Chat
       </a>
-      <ul class="nav-links" role="list">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -131,259 +52,138 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
   <header class="hero">
     <div class="hero-badge">FAQ</div>
-    <h1>Frequently Asked <span>Questions</span></h1>
-    <p>Everything you need to know about Secure Custom AI Chat — setup, security, providers, pricing, and more.</p>
+    <h1>Frequently asked <span>questions</span></h1>
+    <p>Everything you need to know about setting up, configuring, and using Secure Custom AI Chat.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/docs">Full Documentation</a>
+      <a class="btn btn-secondary" href="/app">Open Chat App</a>
+    </div>
   </header>
 
   <main id="main">
     <div class="content">
 
-      <span class="section-label">General</span>
-      <h2 id="general">About the Project</h2>
-      <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-question"><span>How do I install and run Secure Custom AI Chat?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Clone the repository, install dependencies, configure environment variables, and start the server:</p>
+          <pre><code>git clone https://github.com/ssblucky7/Secure-Custom-AI-Chat.git
+cd Secure-Custom-AI-Chat
+npm install
+cp .env.example .env
+# Edit .env and set your provider API key and base URL
+npm start</code></pre>
+          <p>The app will be available at <code>http://localhost:3000</code> by default.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            What is Secure Custom AI Chat?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Secure Custom AI Chat is a self-hosted, open-source web application that provides a unified chat interface for interacting with AI models from multiple providers. It runs as a Node.js server that proxies all requests to AI providers server-side — meaning your API keys are stored on the server and never exposed to the browser or frontend code.</p>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Which AI providers are supported?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>The application supports any provider with an OpenAI-compatible API or Anthropic Messages API. Built-in support includes:</p>
+          <ul>
+            <li><strong>OpenAI</strong> — GPT-4o, GPT-4o mini, o3, o3-mini</li>
+            <li><strong>Anthropic</strong> — Claude 3.7 Sonnet, Claude 3 Opus, Claude 3 Haiku</li>
+            <li><strong>OpenRouter</strong> — 200+ models via a single API</li>
+            <li><strong>Groq</strong> — Fast Llama, Mistral, and Gemma inference</li>
+            <li><strong>Together AI</strong> — Wide model selection</li>
+            <li><strong>DeepSeek</strong> — DeepSeek-V3 and DeepSeek-R1</li>
+            <li><strong>Mistral AI</strong> — Mistral Large, Codestral</li>
+            <li><strong>Ollama</strong> — Local model serving</li>
+            <li><strong>LM Studio</strong> — Local inference server</li>
+          </ul>
+          <p>Custom endpoints can be configured for any compatible provider.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            Is it free?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Yes. The software itself is free and open-source under the MIT License. There is no subscription, no account, and no usage fee for the software.</p>
-            <p>You do pay for the AI API usage charged by your chosen provider. For example, OpenAI charges per token. Some providers like Ollama (local) offer free models with no API costs.</p>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Are my API keys safe from the browser?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), <strong>yes</strong>. API keys are set as environment variables on the server and are never sent to the browser. The browser communicates only with your proxy server.</p>
+          <p>In per-user mode (<code>ALLOW_USER_PROVIDERS=1</code>), each user enters their own key in the browser. These are stored in <code>localStorage</code> and only sent to the provider endpoint you configure. The server never sees user keys.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            How is it different from ChatGPT, Claude web, or OpenRouter?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Key differences:</p>
-            <ul>
-              <li><strong>Self-hosted</strong> — Runs on your own server, not a third-party service.</li>
-              <li><strong>Multi-provider</strong> — Works with OpenAI, Anthropic, Groq, Ollama, and 9+ other providers in one interface.</li>
-              <li><strong>No account required</strong> — Users don't need to register or log in.</li>
-              <li><strong>Local model support</strong> — Connect to Ollama or LM Studio for fully private, no-cost AI.</li>
-              <li><strong>Server-side key proxy</strong> — API keys stay on your server, not in browser localStorage.</li>
-            </ul>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Can I use this with Ollama or local models?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Yes! Ollama and LM Studio are fully supported. For Ollama, set the base URL to <code>http://localhost:11434</code> and the model name to your Ollama model ID (e.g., <code>llama3.2</code>, <code>mistral</code>, <code>codellama</code>). The app will proxy requests through your server to the local Ollama instance.</p>
+          <p>Note: Your proxy server must be able to reach the Ollama endpoint (same machine or accessible network).</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            Who is it for?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>It is designed for developers, IT administrators, home lab enthusiasts, and privacy-conscious users who want to use AI models without depending on a third-party chat service. It is also useful for teams that want to share a single AI chat interface without distributing API keys to every user.</p>
-          </div>
-        </details>
-      </div>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Does the app cache my conversation history?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Yes. All conversations are stored locally in your browser using <strong>IndexedDB</strong>. Nothing is sent to any server except the AI provider you configure. Your history persists between sessions but is never uploaded anywhere.</p>
+          <p>You can export conversations as Markdown files from the conversation menu.</p>
+        </div>
+      </details>
 
-      <span class="section-label">Security</span>
-      <h2 id="security">Security Questions</h2>
-      <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-question"><span>How do I make the app installable as a PWA?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>The app includes a service worker and web app manifest for PWA support. To install:</p>
+          <ul>
+            <li><strong>Chrome/Edge:</strong> Click the install icon in the address bar</li>
+            <li><strong>iOS:</strong> Tap the Share button → "Add to Home Screen"</li>
+            <li><strong>Android:</strong> Tap the menu → "Install app"</li>
+          </ul>
+          <p>Once installed, the app launches in a standalone window and works even with poor connectivity (the UI shell is cached).</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            How does server-side API key protection work?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), you set your API key as <code>AI_API_KEY</code> in the server's <code>.env</code> file. The key is loaded into the server process at startup and never sent to the browser in any response.</p>
-            <p>When the browser sends a chat request to <code>POST /api/chat</code>, the server appends your stored key to the request before forwarding it to the AI provider. The browser never sees the key.</p>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Why am I getting a "Invalid provider URL" error?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>This error occurs when the provider URL fails validation. Common causes:</p>
+          <ul>
+            <li>The URL does not resolve to a valid IP address (typo in hostname)</li>
+            <li>The resolved IP is in a private/reserved range (SSRF protection)</li>
+            <li>The URL does not start with <code>http://</code> or <code>https://</code></li>
+            <li>The URL points to localhost when the server is running remotely</li>
+          </ul>
+          <p>Ensure the provider endpoint is reachable from your server and uses a valid public domain or IP.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            What is SSRF protection and why does it matter?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Server-Side Request Forgery (SSRF) is an attack where a malicious user provides a URL that tricks your server into making requests to internal services (e.g., AWS metadata endpoint, internal databases).</p>
-            <p>Secure Custom AI Chat blocks SSRF by:</p>
-            <ul>
-              <li>Resolving the provider hostname via DNS before making any request.</li>
-              <li>Blocking all private IP ranges: 10.x, 172.16–31.x, 192.168.x, 127.x, 169.254.x, CGNAT (100.64-127.x), and IPv6 equivalents.</li>
-              <li>Blocking known localhost hostnames (<code>localhost</code>, <code>lvh.me</code>, etc.).</li>
-              <li>Blocking URLs with embedded credentials.</li>
-            </ul>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>How do I enable user-configured providers?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Set <code>ALLOW_USER_PROVIDERS=1</code> in your <code>.env</code> file. This enables the "AI Configure / Setup" panel in the app sidebar, allowing each user to enter their own API key and base URL.</p>
+          <p>The provider configuration panel is only visible when this flag is enabled. In this mode, the server does not need pre-configured API keys — each user provides their own.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            Is my conversation data private?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Conversation history is stored only in your browser's <strong>localStorage</strong>. Nothing is saved on the server — the server is stateless. Your messages are sent to the AI provider you configure, subject to their privacy policy.</p>
-            <p>The Secure Custom AI Chat server does not log, store, or retain your conversation content.</p>
-          </div>
-        </details>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Can I deploy this to a production environment?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Yes. Set <code>NODE_ENV=production</code> before starting. For production deployment:</p>
+          <ul>
+            <li>Use a process manager like PM2: <code>pm2 start server.js</code></li>
+            <li>Serve behind a reverse proxy (nginx, Caddy) with HTTPS</li>
+            <li>Set strong API keys in environment variables</li>
+            <li>Configure rate limits appropriately for your traffic</li>
+            <li>Add authentication at the infrastructure level (the app itself has no login system)</li>
+          </ul>
+          <p>The app is designed to be lightweight and can run on any Node.js 18+ environment including Docker, VPS, or cloud platforms.</p>
+        </div>
+      </details>
 
-        <details class="faq-item">
-          <summary class="faq-question">
-            Should I add authentication if I deploy it publicly?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Yes. The application has no built-in login system. If you deploy it on a public URL, anyone who finds the URL can use the API (and potentially exhaust your API credits).</p>
-            <p>You can protect it by:</p>
-            <ul>
-              <li>Adding HTTP Basic Auth via your reverse proxy (nginx, Caddy, etc.).</li>
-              <li>Restricting access by IP using your firewall or reverse proxy.</li>
-              <li>Deploying behind a VPN.</li>
-              <li>Setting <code>ALLOW_USER_PROVIDERS=0</code> so no API key is needed client-side (reduces risk but does not prevent usage).</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <span class="section-label">Providers &amp; Models</span>
-      <h2 id="providers">Providers &amp; Models</h2>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            Which AI providers are supported?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Any provider using the <strong>OpenAI-compatible API</strong> or the <strong>Anthropic Messages API</strong>. Built-in presets include:</p>
-            <ul>
-              <li>ZenMux (OpenAI-compatible and Anthropic)</li>
-              <li>OpenAI (GPT-4o, GPT-4.1, etc.)</li>
-              <li>Anthropic (Claude Sonnet, Claude Haiku, etc.)</li>
-              <li>OpenRouter (access to 100+ models)</li>
-              <li>Groq (fast inference)</li>
-              <li>Together AI</li>
-              <li>DeepSeek</li>
-              <li>Mistral AI</li>
-              <li>Ollama (local)</li>
-              <li>LM Studio (local)</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            Can I use Ollama for fully local, private AI?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Yes. Set <code>ALLOW_PRIVATE_PROVIDER_URLS=1</code> in your <code>.env</code> file. Then in the app settings, select the <strong>Ollama / local</strong> preset, which sets the base URL to <code>http://localhost:11434/v1</code>. All requests are processed on your local machine with no data leaving your network.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            How do I load available models from my provider?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>In the settings dialog, after entering your Base URL and API key, click the <strong>Load models</strong> button. The server calls the provider's <code>/models</code> endpoint and returns the list. You can then select from the loaded models or type any model ID manually.</p>
-          </div>
-        </details>
-      </div>
-
-      <span class="section-label">Usage</span>
-      <h2 id="usage">Using the App</h2>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            Does it work offline?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>The app shell (HTML, CSS, JavaScript, and icons) is cached by the service worker and loads offline. Your saved chat history in localStorage is also accessible offline.</p>
-            <p>However, sending new messages requires an active internet connection to reach the AI provider (or a local Ollama instance on your network).</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            Can I install it as a mobile app?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Yes. On iOS, open the app in Safari and tap <strong>Share → Add to Home Screen</strong>. On Android, tap the browser menu and choose <strong>Install app</strong> or <strong>Add to Home Screen</strong>. On desktop Chrome/Edge, click the install icon in the address bar.</p>
-            <p>Once installed, the app runs in standalone mode (no browser chrome) and appears as a regular app icon on your device.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            Where is my chat history stored?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Conversation history is stored in your browser's <strong>localStorage</strong> under the key <code>secureCustomAIStateV1</code>. Up to 30 conversations are kept, sorted by most recently updated. Clearing your browser data removes the history.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            How do I export a conversation?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Click the <strong>Export</strong> button in the top toolbar while viewing a conversation. A Markdown file (<code>.md</code>) will be downloaded to your device containing all messages with role headers (You / Assistant).</p>
-          </div>
-        </details>
-      </div>
-
-      <span class="section-label">Setup</span>
-      <h2 id="setup">Installation &amp; Setup</h2>
-      <div class="faq-list">
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            How do I install Secure Custom AI Chat?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p>Requirements: Node.js 18 or higher.</p>
-            <ol>
-              <li>Download or clone the repository.</li>
-              <li>Copy <code>.env.example</code> to <code>.env</code> and fill in your settings.</li>
-              <li>Run <code>npm install</code> to install dependencies.</li>
-              <li>Run <code>node server.js</code> or <code>npm start</code> to start the server.</li>
-              <li>Open <code>http://localhost:3000</code> in your browser.</li>
-            </ol>
-            <p>See the full <a href="/docs">documentation</a> for production deployment instructions.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary class="faq-question">
-            What are the system requirements?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="faq-answer">
-            <p><strong>Server:</strong> Node.js 18 or higher. Any operating system. Minimal CPU/memory requirements — the server uses native Node.js fetch and does not run AI models locally (unless using Ollama).</p>
-            <p><strong>Browser:</strong> Any modern browser supporting ES2020+. Chrome, Firefox, Safari 14+, Edge. PWA installation requires Chrome, Edge, or Safari.</p>
-          </div>
-        </details>
-      </div>
+      <details class="faq-item">
+        <summary class="faq-question"><span>Is this app free and open source?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-answer">
+          <p>Yes. Secure Custom AI Chat is released under the MIT License. You are free to use, modify, and distribute it for personal or commercial purposes. The source code is available on GitHub.</p>
+          <p>You are responsible for your own API costs when using paid providers. This application does not charge any fees.</p>
+        </div>
+      </details>
 
     </div>
   </main>
@@ -424,11 +224,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

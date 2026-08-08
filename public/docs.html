@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Documentation — Secure Custom AI Chat</title>
   <meta name="description" content="Installation, configuration, and deployment guide for Secure Custom AI Chat. Node.js setup, environment variables, reverse proxy, Docker, and Ollama integration.">
   <meta name="robots" content="index,follow">
@@ -14,6 +15,8 @@
   <meta property="og:url" content="https://ssblucky7.dev/docs">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Documentation — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
   <script type="application/ld+json">
   {
@@ -37,7 +40,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-inner">
       <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
-      <ul class="nav-links" role="list">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -46,8 +49,10 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
   <header class="hero">
     <div class="hero-badge">Documentation</div>
     <h1>Installation &amp; <span>Configuration</span></h1>
@@ -86,9 +91,10 @@ npm start
       <h2 id="env-vars">Environment Variables</h2>
       <p>All configuration is done via environment variables in your <code>.env</code> file. Copy <code>.env.example</code> and fill in your values.</p>
 
-      <table class="provider-table" aria-label="Environment variables">
+      <div class="table-wrap" role="region" aria-label="Environment variables" tabindex="0">
+      <table class="provider-table">
         <thead>
-          <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
+          <tr><th scope="col">Variable</th><th scope="col">Default</th><th scope="col">Description</th></tr>
         </thead>
         <tbody>
           <tr>
@@ -143,6 +149,7 @@ npm start
           </tr>
         </tbody>
       </table>
+      </div>
 
       <span class="section-label">Example Configs</span>
       <h2 id="examples">Example Configurations</h2>
@@ -337,11 +344,12 @@ data: [DONE]</code></pre>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+  <script src="/nav.js" defer></script>
 </body>
 </html>

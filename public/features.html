@@ -2,46 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Features — Secure Custom AI Chat</title>
-  <meta name="description" content="Explore all features of Secure Custom AI Chat: SSE streaming, multi-provider support, SSRF protection, PWA, conversation export, Markdown rendering, and more.">
+  <meta name="description" content="Explore the security-first features of Secure Custom AI Chat: server-side key protection, multi-provider support, PWA, rate limiting, and more.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/features">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Features — Secure Custom AI Chat">
-  <meta property="og:description" content="Real-time SSE streaming, 12+ AI providers, server-side key protection, PWA, Markdown rendering, and more.">
+  <meta property="og:description" content="Self-hosted AI chat with server-side key protection, multi-provider support, PWA, and enterprise security.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/features">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Features — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Secure Custom AI Chat",
-    "applicationCategory": "CommunicationApplication",
-    "operatingSystem": "Any",
-    "url": "https://ssblucky7.dev",
-    "description": "Self-hosted multi-provider AI chat interface with server-side key protection, SSE streaming, and PWA support.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "featureList": [
-      "Server-side API key proxy — keys never reach the browser",
-      "OpenAI-compatible streaming chat",
-      "Anthropic Messages API support",
-      "12+ provider presets",
-      "Real-time SSE token streaming",
-      "Markdown rendering with code blocks",
-      "Progressive Web App — installable on any device",
-      "Conversation history in localStorage",
-      "Conversation export as Markdown",
-      "SSRF protection with IP/hostname validation",
-      "Rate limiting (120/min API, 30/min chat)",
-      "Content Security Policy via Helmet",
-      "Mobile responsive layout",
-      "Keyboard accessible",
-      "Accessibility: ARIA, skip link, focus indicators"
-    ],
+    "@type": "WebPage",
+    "name": "Features — Secure Custom AI Chat",
+    "url": "https://ssblucky7.dev/features",
+    "description": "Feature overview for Secure Custom AI Chat — a self-hosted, multi-provider AI chat interface with server-side key protection.",
+    "isPartOf": { "@type": "WebSite", "url": "https://ssblucky7.dev", "name": "Secure Custom AI Chat" },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -61,7 +45,7 @@
         <div class="nav-logo" aria-hidden="true">✦</div>
         Secure AI Chat
       </a>
-      <ul class="nav-links" role="list">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features" aria-current="page">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -70,188 +54,139 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
   <header class="hero">
-    <div class="hero-badge">Feature Overview</div>
-    <h1>Everything you need for <span>secure AI chat</span></h1>
-    <p>Built with security and simplicity in mind — server-side key proxying, real-time streaming, 12+ providers, and a PWA you can install on any device.</p>
+    <div class="hero-badge">Features</div>
+    <h1>Built for <span>security</span> and flexibility</h1>
+    <p>Every feature is designed around one principle: your API keys never leave the server. Everything else follows from that.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/">Start Chatting</a>
-      <a class="btn btn-secondary" href="/providers">View Providers</a>
+      <a class="btn btn-primary" href="/app">Try the App</a>
+      <a class="btn btn-secondary" href="/security">Security Overview</a>
     </div>
   </header>
 
   <main id="main">
     <div class="content">
 
-      <span class="section-label">Security</span>
-      <h2 id="security">Security Features</h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-icon">🔑</div>
-          <div class="feature-content">
-            <h3>Server-Side API Key Proxy</h3>
-            <p>In default mode, your API key is stored in server environment variables and never sent to the browser. The server acts as an authenticated proxy between your browser and the AI provider.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-content">
-            <h3>SSRF Protection</h3>
-            <p>Provider URLs are validated against private IP ranges (10.x, 172.16-31.x, 192.168.x, loopback, link-local, CGNAT) and resolved via DNS to block server-side request forgery attacks.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🚦</div>
-          <div class="feature-content">
-            <h3>Rate Limiting</h3>
-            <p>Built-in rate limiting: 120 requests/minute for the API, 30 requests/minute for chat. Uses <code>express-rate-limit</code> with standard RFC 6585 rate-limit headers.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🪖</div>
-          <div class="feature-content">
-            <h3>Security Headers (Helmet)</h3>
-            <p>Content Security Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and more — configured via Helmet for defense-in-depth protection.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🧹</div>
-          <div class="feature-content">
-            <h3>Prototype Pollution Prevention</h3>
-            <p>All incoming JSON bodies are sanitized to strip <code>__proto__</code>, <code>constructor</code>, and <code>prototype</code> keys before processing.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🔇</div>
-          <div class="feature-content">
-            <h3>Secret Redaction in Errors</h3>
-            <p>All error messages and server logs are sanitized to redact API keys and sensitive values before they could be exposed via error responses.</p>
-          </div>
-        </div>
-      </div>
+      <span class="section-label">Core</span>
+      <h2 id="api-key-protection">API Key Protection</h2>
+      <p>The cornerstone of this application is that <strong>API keys are never exposed to the browser</strong>. In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), the server is configured with one or more provider API keys via environment variables. The client never sees, stores, or sends these keys.</p>
+      <p>When you send a message, the request goes to your own server, which appends the key server-side and forwards it to the AI provider. The browser only communicates with your proxy.</p>
 
-      <span class="section-label">AI Features</span>
-      <h2 id="ai-features">AI &amp; Chat Features</h2>
+      <span class="section-label">Multi-Provider</span>
+      <h2 id="provider-support">Multiple AI Providers</h2>
+      <p>Configure and switch between many AI providers from a single interface:</p>
+      <ul>
+        <li><strong>OpenAI</strong> — GPT-4o, GPT-4o mini, o3, o3-mini, o4-mini</li>
+        <li><strong>Anthropic</strong> — Claude 3.7 Sonnet, Claude 3.5 Sonnet, Claude 3 Opus, Claude 3 Haiku</li>
+        <li><strong>OpenRouter</strong> — Access to 200+ models through a single API</li>
+        <li><strong>Groq</strong> — Fast inference with Llama, Mistral, and Gemma models</li>
+        <li><strong>Together AI</strong> — Wide model library with competitive pricing</li>
+        <li><strong>DeepSeek</strong> — DeepSeek-V3, DeepSeek-R1 reasoning models</li>
+        <li><strong>Mistral AI</strong> — Mistral Large, Mistral Nemo, Codestral</li>
+        <li><strong>Ollama</strong> — Run models locally on your machine</li>
+        <li><strong>LM Studio</strong> — Local inference server</li>
+      </ul>
+      <p>Any provider that supports the OpenAI-compatible chat completions API or the Anthropic Messages API can be configured manually.</p>
+
+      <span class="section-label">Performance</span>
+      <h2 id="real-time">Real-Time Streaming</h2>
+      <p>Responses stream in real-time using Server-Sent Events (SSE). Tokens appear on screen as they are generated by the AI, providing a smooth, ChatGPT-like experience. The app uses <code>requestAnimationFrame</code> for efficient token-by-token rendering without unnecessary reflows.</p>
+
+      <span class="section-label">Interface</span>
+      <h2 id="chat-experience">Chat Interface</h2>
       <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-icon">⚡</div>
-          <div class="feature-content">
-            <h3>Real-Time SSE Streaming</h3>
-            <p>Responses stream token-by-token via Server-Sent Events. The UI uses <code>requestAnimationFrame</code> batching for smooth, non-blocking rendering even at high token rates.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🔄</div>
-          <div class="feature-content">
-            <h3>Dual API Protocol Support</h3>
-            <p>Supports both <strong>OpenAI-compatible</strong> (chat/completions) and <strong>Anthropic Messages API</strong> protocols. The server normalizes Anthropic SSE events to a consistent format.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🏪</div>
-          <div class="feature-content">
-            <h3>12+ Provider Presets</h3>
-            <p>One-click presets for ZenMux, OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama, and LM Studio. Custom URL support for any compatible provider.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">🤖</div>
-          <div class="feature-content">
-            <h3>Model Management</h3>
-            <p>Load available models from provider API, add multiple models as chips, and switch between them per-conversation. Supports any valid provider model ID.</p>
-          </div>
-        </div>
         <div class="feature-item">
           <div class="feature-icon">💬</div>
           <div class="feature-content">
-            <h3>System Prompt Control</h3>
-            <p>Customize the system prompt from the settings dialog. Supports up to 4,000 characters. Automatically prepended to every conversation.</p>
+            <h3>Conversation History</h3>
+            <p>Multiple conversations with local history stored in IndexedDB. No server-side storage of your chats.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔁</div>
+          <div class="feature-icon">📋</div>
           <div class="feature-content">
-            <h3>Regenerate Responses</h3>
-            <p>Click "Regenerate" on any assistant message to re-run the request from that point, with the same conversation context.</p>
+            <h3>Copy & Export</h3>
+            <p>One-click copy of any response. Export full conversations as Markdown files for record-keeping.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⏹️</div>
+          <div class="feature-content">
+            <h3>Stop Generation</h3>
+            <p>Interrupt streaming responses at any time. Save partially-generated responses before stopping.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">⌨️</div>
+          <div class="feature-content">
+            <h3>Keyboard Shortcuts</h3>
+            <p>Enter to send, Shift+Enter for newline, Ctrl/Cmd+K to focus input. Full keyboard accessibility.</p>
           </div>
         </div>
       </div>
 
-      <span class="section-label">UI &amp; UX</span>
-      <h2 id="ui-features">Interface Features</h2>
-      <div class="feature-grid">
-        <div class="feature-item">
-          <div class="feature-icon">📝</div>
-          <div class="feature-content">
-            <h3>Markdown Rendering</h3>
-            <p>Assistant responses render headings (h1–h3), bold, italic, inline code, fenced code blocks with language labels, ordered and unordered lists, blockquotes, and clickable links.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">💾</div>
-          <div class="feature-content">
-            <h3>Conversation History</h3>
-            <p>Up to 30 conversations are saved to browser localStorage. Conversations are sorted by last-updated time. History persists across browser restarts.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">📤</div>
-          <div class="feature-content">
-            <h3>Export Conversations</h3>
-            <p>Download any conversation as a formatted Markdown file (.md) with role headers for each message. Filename is auto-generated from the conversation title.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">📱</div>
-          <div class="feature-content">
-            <h3>Progressive Web App</h3>
-            <p>Install the app on iOS (Add to Home Screen), Android, or desktop. The service worker caches the app shell for offline access. Web App Manifest enables standalone mode.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">♿</div>
-          <div class="feature-content">
-            <h3>Accessibility</h3>
-            <p>Skip link, ARIA roles, live regions for status updates, focus-visible outlines, prefers-reduced-motion support, semantic HTML, and keyboard navigation throughout.</p>
-          </div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon">📐</div>
-          <div class="feature-content">
-            <h3>Responsive Design</h3>
-            <p>Fully responsive layout from 320px mobile to wide desktop. Mobile sidebar with backdrop overlay. Safe-area inset support for notched devices. Touch-friendly controls.</p>
-          </div>
-        </div>
-      </div>
+      <span class="section-label">Installation</span>
+      <h2 id="pwa">Installable PWA</h2>
+      <p>The application is a Progressive Web App. On supported browsers, you can install it to your home screen or desktop for a native-app-like experience. It works offline for navigation (the chat UI shell is cached), though streaming requires a network connection.</p>
+      <ul>
+        <li><strong>Chrome/Edge:</strong> Click the install icon in the address bar</li>
+        <li><strong>iOS:</strong> Tap Share → "Add to Home Screen"</li>
+        <li><strong>Android:</strong> Tap the menu → "Install app"</li>
+      </ul>
 
       <span class="section-label">Configuration</span>
-      <h2 id="configuration">Configuration Options</h2>
-      <p>All configuration is via environment variables in your <code>.env</code> file. No code changes required.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="card-icon">🌐</div>
-          <h3>Provider URL &amp; Key</h3>
-          <p>Set <code>AI_API_URL</code> and <code>AI_API_KEY</code> to configure a default server-side provider. These are never exposed to clients.</p>
+      <h2 id="settings">Provider Configuration</h2>
+      <p>Click "AI Configure / Setup" in the sidebar to:</p>
+      <ul>
+        <li>Choose between OpenAI and Anthropic API protocols</li>
+        <li>Enter a provider base URL and API key</li>
+        <li>Select or enter a model name</li>
+        <li>Set system prompt, temperature, and max tokens</li>
+        <li>Test the connection before saving</li>
+      </ul>
+      <p>Configuration is stored in <code>localStorage</code> on your device. It is not transmitted to any third party except when you explicitly send it to your own configured provider endpoint.</p>
+
+      <span class="section-label">Security</span>
+      <h2 id="server-security">Server-Side Security</h2>
+      <div class="security-grid">
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>SSRF Protection</h3>
+          </div>
+          <p>Provider URLs are validated via DNS resolution and IP checks before any request is made, preventing requests to internal network addresses.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🎛️</div>
-          <h3>User Provider Mode</h3>
-          <p>Set <code>ALLOW_USER_PROVIDERS=1</code> to let users supply their own provider URL and API key. The server still proxies all requests.</p>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Helmet Headers</h3>
+          </div>
+          <p>Security headers are applied automatically: X-Frame-Options, Content-Security-Policy, Strict-Transport-Security, and more.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🏠</div>
-          <h3>Local Model Access</h3>
-          <p>Set <code>ALLOW_PRIVATE_PROVIDER_URLS=1</code> to allow connections to localhost providers like Ollama or LM Studio during development.</p>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Rate Limiting</h3>
+          </div>
+          <p>Request rate limiting protects against abuse. Configurable per-route with express-rate-limit.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">⚖️</div>
-          <h3>Token Limits</h3>
-          <p>Set <code>AI_MAX_TOKENS_LIMIT</code> to cap the maximum tokens per request (1–100,000). Default is 8,192. The UI enforces this server-defined limit.</p>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Logging</h3>
+          </div>
+          <p>Structured console logging for requests and errors. No sensitive key data is logged. Configurable log level.</p>
         </div>
       </div>
+
+      <span class="section-label">Advanced</span>
+      <h2 id="api-mode">User-Configured Providers (Optional)</h2>
+      <p>Set <code>ALLOW_USER_PROVIDERS=1</code> to enable per-user provider configuration. Users can enter their own API keys and base URLs, stored locally in their browser. Server-side keys remain protected in both modes.</p>
 
     </div>
   </main>
@@ -292,11 +227,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

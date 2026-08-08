@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Changelog — Secure Custom AI Chat</title>
-  <meta name="description" content="Changelog for Secure Custom AI Chat — release history, new features, security fixes, and improvements.">
+  <meta name="description" content="Version history and changelog for Secure Custom AI Chat. Track updates, new features, and security fixes.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/changelog">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Changelog — Secure Custom AI Chat">
+  <meta property="og:description" content="Version history and changelog for Secure Custom AI Chat.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/changelog">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Changelog — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
-      <ul class="nav-links" role="list">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo" aria-hidden="true">✦</div>
+        Secure AI Chat
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -29,148 +37,62 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
   <header class="hero">
-    <div class="hero-badge">Release History</div>
-    <h1>What's <span>Changed</span></h1>
-    <p>All notable changes, new features, bug fixes, and security improvements to Secure Custom AI Chat.</p>
+    <div class="hero-badge">Changelog</div>
+    <h1>Version <span>history</span></h1>
+    <p>Track the evolution of Secure Custom AI Chat — features, improvements, and security updates.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/app">Open Chat App</a>
+      <a class="btn btn-secondary" href="https://github.com/ssblucky7/Secure-Custom-AI-Chat/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a>
+    </div>
   </header>
+
   <main id="main">
     <div class="content">
 
       <div class="changelog-entry">
-        <div class="changelog-header">
-          <span class="changelog-version">v2.0.0</span>
-          <span class="changelog-date">2025-07</span>
-          <span class="badge badge-green">Latest</span>
-        </div>
-        <h2 id="v2-0-0">v2.0.0 — Major SEO &amp; Content Update</h2>
-        <div class="changelog-section">
-          <h3>✨ New</h3>
-          <ul>
-            <li>Full SEO landing site: <code>/features</code>, <code>/providers</code>, <code>/security</code>, <code>/faq</code>, <code>/docs</code>, <code>/about</code>, <code>/privacy</code>, <code>/terms</code>, <code>/changelog</code> pages.</li>
-            <li>Shared <code>page.css</code> stylesheet with dark theme, hero, cards, feature grid, FAQ accordion, provider table, alert boxes, and responsive nav.</li>
-            <li>OG image (<code>/og-image.svg</code>) for social sharing previews.</li>
-            <li>Structured data (JSON-LD) on all pages: WebSite, SoftwareApplication, FAQPage, AboutPage, BreadcrumbList.</li>
-            <li><code>sitemap.xml</code> listing all pages for search engine indexing.</li>
-            <li><code>robots.txt</code> with sitemap reference and crawl rules.</li>
-            <li>Breadcrumb navigation on all SEO pages.</li>
-            <li>FAQ page with expandable <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> accordion with structured data.</li>
-            <li>Providers page with full comparison table: protocol, base URL, suggested models, preset status.</li>
-            <li>Security page with layered security model documentation.</li>
-            <li>Docs page with complete installation, configuration, and deployment guide.</li>
-          </ul>
-        </div>
-        <div class="changelog-section">
-          <h3>🔒 Security</h3>
-          <ul>
-            <li>No security regressions. All existing server-side security features preserved.</li>
-            <li>New pages use <code>page.css</code> with no external dependencies.</li>
-            <li>Server routes for <code>.html</code> pages serve via Express static middleware, respecting existing CSP headers.</li>
-          </ul>
-        </div>
-        <div class="changelog-section">
-          <h3>♿ Accessibility</h3>
-          <ul>
-            <li>All new pages include skip links, <code>aria-current</code> on active nav items, semantic landmarks, and focus-visible outlines.</li>
-            <li>FAQ accordion uses native <code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> for keyboard accessibility without JavaScript.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="changelog-header">
-          <span class="changelog-version">v1.5.0</span>
-          <span class="changelog-date">2025-04</span>
-        </div>
-        <h2 id="v1-5-0">v1.5.0 — Provider Presets &amp; Model Chips</h2>
-        <div class="changelog-section">
-          <h3>✨ New</h3>
-          <ul>
-            <li>Provider preset dropdown with one-click configuration for ZenMux, OpenAI, Anthropic, OpenRouter, Groq, Together AI, DeepSeek, Mistral, Ollama, and LM Studio.</li>
-            <li>Multi-model chip UI — add multiple model IDs, switch between them per conversation.</li>
-            <li>"Load models" button fetches available models from the provider's <code>/models</code> endpoint.</li>
-            <li>ZenMux as default provider preset with free model options.</li>
-            <li>Anthropic Messages API support with server-side SSE normalization.</li>
-          </ul>
-        </div>
-        <div class="changelog-section">
-          <h3>🐛 Fixed</h3>
-          <ul>
-            <li>Streaming no longer hangs on Anthropic <code>message_stop</code> events.</li>
-            <li>Model dropdown now correctly resets when provider preset changes.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="changelog-header">
-          <span class="changelog-version">v1.4.0</span>
-          <span class="changelog-date">2025-02</span>
-        </div>
-        <h2 id="v1-4-0">v1.4.0 — PWA &amp; Offline Support</h2>
-        <div class="changelog-section">
-          <h3>✨ New</h3>
-          <ul>
-            <li>Service worker with app shell caching for offline loading.</li>
-            <li>Web App Manifest with shortcuts, icons, display mode, and theme color.</li>
-            <li>PWA install prompt detection and banner UI.</li>
-            <li>Safe-area inset CSS variables for notched mobile devices.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="changelog-header">
-          <span class="changelog-version">v1.3.0</span>
-          <span class="changelog-date">2024-12</span>
-        </div>
-        <h2 id="v1-3-0">v1.3.0 — Security Hardening</h2>
-        <div class="changelog-section">
-          <h3>🔒 Security</h3>
-          <ul>
-            <li>SSRF protection with full private IP range blocking (IPv4 + IPv6).</li>
-            <li>DNS resolution pre-check for provider hostnames.</li>
-            <li>Prototype pollution sanitization on all incoming JSON bodies.</li>
-            <li>Secret redaction in error messages and server logs.</li>
-            <li>Request body size limit (2MB).</li>
-            <li>AbortController 60s timeout on all provider requests.</li>
-            <li>Rate limiting: 120/min API, 30/min chat.</li>
-            <li>Helmet security headers including CSP, X-Frame-Options, and Referrer-Policy.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="changelog-entry">
-        <div class="changelog-header">
+        <div class="changelog-meta">
           <span class="changelog-version">v1.0.0</span>
-          <span class="changelog-date">2024-09</span>
+          <span class="changelog-date">August 2025</span>
         </div>
-        <h2 id="v1-0-0">v1.0.0 — Initial Release</h2>
-        <div class="changelog-section">
-          <h3>✨ New</h3>
+        <div class="changelog-body">
+          <h3>Initial Release</h3>
           <ul>
-            <li>Server-side API key proxy (Express + Node.js native fetch).</li>
-            <li>Real-time SSE streaming with <code>requestAnimationFrame</code> rendering.</li>
-            <li>Conversation history in localStorage (up to 30 conversations).</li>
-            <li>Markdown rendering: headings, bold, italic, code blocks, lists, blockquotes.</li>
-            <li>Conversation export as Markdown.</li>
-            <li>System prompt configuration.</li>
-            <li>Regenerate response functionality.</li>
-            <li>Responsive dark theme UI.</li>
-            <li>Keyboard navigation and accessibility (ARIA, skip link, focus indicators).</li>
+            <li>Multi-provider AI chat with OpenAI, Anthropic, OpenRouter, Groq, Ollama, and more</li>
+            <li>Server-side API key protection — keys never exposed to the browser</li>
+            <li>Real-time streaming responses (SSE)</li>
+            <li>Conversation history with IndexedDB storage</li>
+            <li>PWA support with service worker caching</li>
+            <li>SSRF protection via DNS resolution and IP validation</li>
+            <li>Security headers via Helmet</li>
+            <li>Rate limiting for chat endpoints</li>
+            <li>Dark/light theme toggle</li>
+            <li>Export conversations as Markdown</li>
+            <li>Keyboard shortcuts (Enter to send, Shift+Enter for newline)</li>
+            <li>User-configured providers mode (<code>ALLOW_USER_PROVIDERS=1</code>)</li>
+            <li>API key rotation with multiple provider keys</li>
+            <li>Responsive design for mobile and desktop</li>
+            <li>Documentation, FAQ, privacy, and terms pages</li>
           </ul>
         </div>
       </div>
 
     </div>
   </main>
+
   <footer class="site-footer" aria-label="Site footer">
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <a class="nav-brand" href="/">
+            <div class="nav-logo" aria-hidden="true">✦</div>
+            Secure AI Chat
+          </a>
           <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
         </div>
         <div class="footer-col">
@@ -199,11 +121,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

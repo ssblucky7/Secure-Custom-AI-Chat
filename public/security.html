@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Security — Secure Custom AI Chat</title>
-  <meta name="description" content="Security model of Secure Custom AI Chat: server-side key proxy, SSRF protection, rate limiting, Content Security Policy, and prototype pollution prevention.">
+  <meta name="description" content="Security features of Secure Custom AI Chat: SSRF protection, Helmet headers, rate limiting, and server-side key management.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/security">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Security — Secure Custom AI Chat">
-  <meta property="og:description" content="How Secure Custom AI Chat protects your API keys, blocks SSRF attacks, and applies defense-in-depth security.">
+  <meta property="og:description" content="Enterprise-grade security: SSRF protection, Helmet headers, rate limiting, and server-side API key management.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/security">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Security — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
   <script type="application/ld+json">
   {
@@ -21,7 +24,8 @@
     "@type": "WebPage",
     "name": "Security — Secure Custom AI Chat",
     "url": "https://ssblucky7.dev/security",
-    "description": "Security model including server-side API key proxy, SSRF protection, rate limiting, and CSP headers.",
+    "description": "Security features and measures in Secure Custom AI Chat.",
+    "isPartOf": { "@type": "WebSite", "url": "https://ssblucky7.dev", "name": "Secure Custom AI Chat" },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -41,7 +45,7 @@
         <div class="nav-logo" aria-hidden="true">✦</div>
         Secure AI Chat
       </a>
-      <ul class="nav-links" role="list">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security" aria-current="page">Security</a></li>
@@ -50,170 +54,163 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
   <header class="hero">
-    <div class="hero-badge">Security Model</div>
-    <h1>Built with <span>security first</span></h1>
-    <p>Multiple layers of defense protect your API keys, block server-side request forgery, limit abuse, and enforce strict content security policies.</p>
+    <div class="hero-badge">Security</div>
+    <h1>Security <span>first</span> by design</h1>
+    <p>Every layer of this application is built with security as a priority. Your API keys are the most critical asset, and they are never exposed to the browser.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/faq#security">Security FAQ</a>
-      <a class="btn btn-secondary" href="/docs">Read the Docs</a>
+      <a class="btn btn-primary" href="/app">Try the App</a>
+      <a class="btn btn-secondary" href="/docs">Deployment Guide</a>
     </div>
   </header>
 
   <main id="main">
     <div class="content">
 
-      <div class="alert alert-success">
-        <span class="alert-icon">✅</span>
-        <div><strong>Security design goal:</strong> Even if a user's browser is compromised, even if someone reads all client-side code, and even if the server returns an error — no API key or secret value should ever be exposed.</div>
+      <div class="security-grid">
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>API Key Protection</h3>
+          </div>
+          <p>Server-side keys are never exposed to the browser. In default mode, keys are loaded from environment variables and injected server-side only.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>SSRF Protection</h3>
+          </div>
+          <p>Provider URLs are validated via DNS resolution and IP address checks before any request is made. Internal addresses are blocked.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Helmet Headers</h3>
+          </div>
+          <p>Security headers applied automatically: X-Frame-Options, CSP, HSTS, Referrer-Policy, and more.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Rate Limiting</h3>
+          </div>
+          <p>Request rate limiting protects against abuse. Configurable per-route via express-rate-limit.</p>
+        </div>
       </div>
 
-      <span class="section-label">Layer 1</span>
-      <h2 id="key-proxy">Server-Side API Key Proxy</h2>
-      <p>The most important security feature: <strong>API keys never leave the server</strong>.</p>
-      <p>In default mode (<code>ALLOW_USER_PROVIDERS=0</code>), the flow is:</p>
+      <span class="section-label">API Key Architecture</span>
+      <h2 id="key-protection">How API keys are protected</h2>
+      <p>The most important security property of this application is that <strong>API keys are never sent to or stored in the browser</strong>.</p>
+      <p>In the default configuration mode (<code>ALLOW_USER_PROVIDERS=0</code>):</p>
       <ol>
-        <li>Administrator sets <code>AI_API_KEY</code> in the server's <code>.env</code> file.</li>
-        <li>Server loads the key at startup into a Node.js environment variable.</li>
-        <li>Browser sends <code>POST /api/chat</code> with just the message, model, and settings — no key.</li>
-        <li>Server appends the stored key to the provider request.</li>
-        <li>Provider responds; server streams the response back to the browser.</li>
-        <li>The browser receives only the AI text — never the API key.</li>
+        <li>API keys are loaded from environment variables at server startup</li>
+        <li>When a user sends a message, the server appends the key server-side</li>
+        <li>The browser only communicates with your proxy server</li>
+        <li>No key ever appears in browser DevTools, network requests, or localStorage</li>
       </ol>
-      <p>Even in user-provider mode (<code>ALLOW_USER_PROVIDERS=1</code>), the browser sends a key to the server's own <code>/api/chat</code> endpoint, and the server proxies from there. The key is sent over HTTPS to your own server — it is not embedded in frontend code or exposed in HTML.</p>
+      <p>In per-user mode (<code>ALLOW_USER_PROVIDERS=1</code>), each user enters their own key in the browser. These keys are stored in <code>localStorage</code> and only sent to the provider endpoint the user configures. The proxy server never sees or stores user keys.</p>
+
+      <span class="section-label">Server Protection</span>
+      <h2 id="server-security">Server-side protections</h2>
+      <div class="security-grid">
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-high"></span>
+            <h3>SSRF Defense</h3>
+          </div>
+          <p>Before proxying any request, the provider URL is resolved via DNS and the resulting IP is checked against private/reserved ranges. This prevents requests to internal services (metadata endpoints, internal APIs, etc.).</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Helmet Headers</h3>
+          </div>
+          <p>The <code>helmet</code> package configures 14+ security headers including X-Content-Type-Options, X-Download-Options, X-Permitted-Cross-Domain-Policies, and Content-Security-Policy.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Rate Limiting</h3>
+          </div>
+          <p>Two rate limiters are applied: one for the chat endpoint (configurable via <code>CHAT_RATE_LIMIT</code>) and one for API keys listing. Prevents abuse and excessive costs.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>CORS Configuration</h3>
+          </div>
+          <p>CORS is configured to allow only the same origin by default. Custom origins can be set via <code>CORS_ORIGIN</code>.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>No Sensitive Logging</h3>
+          </div>
+          <p>Request logging intentionally excludes API keys and sensitive headers. The <code>LOG_LEVEL</code> environment variable controls verbosity.</p>
+        </div>
+        <div class="security-item">
+          <div class="security-level">
+            <span class="severity-dot severity-good"></span>
+            <h3>Timeout Controls</h3>
+          </div>
+          <p>Proxy requests have configurable timeouts via <code>PROXY_TIMEOUT_MS</code> to prevent hung connections and resource exhaustion.</p>
+        </div>
+      </div>
+
+      <span class="section-label">Client-Side Security</span>
+      <h2 id="client-security">Browser-side considerations</h2>
+      <p>The frontend is a single-page application with no server-side rendering of content. This means:</p>
+      <ul>
+        <li><strong>No server-side templates to inject</strong> — all content is rendered client-side</li>
+        <li><strong>No client-side storage of API keys</strong> in default mode</li>
+        <li><strong>Chat history is local-only</strong> — stored in IndexedDB on the user's device</li>
+        <li><strong>No third-party analytics or tracking scripts</strong></li>
+        <li><strong>CSP headers prevent inline script injection</strong></li>
+      </ul>
+
+      <span class="section-label">Deployment Security</span>
+      <h2 id="deployment">Securing your deployment</h2>
+      <p>If you plan to deploy this application publicly, follow these recommendations:</p>
+      <ol class="steps">
+        <li class="step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h3>Use HTTPS</h3>
+            <p>Always serve the application over HTTPS. API keys and conversations are transmitted between the browser and your server.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h3>Set strong environment variables</h3>
+            <p>Use strong, unique API keys. Set <code>NODE_ENV=production</code> and configure appropriate rate limits.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h3>Add authentication</h3>
+            <p>Place the application behind a reverse proxy with authentication (e.g., nginx with basic auth, Cloudflare Access, or a dedicated auth middleware).</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step-number"></div>
+          <div class="step-content">
+            <h3>Keep dependencies updated</h3>
+            <p>Run <code>npm audit</code> regularly and update dependencies to patch security vulnerabilities.</p>
+          </div>
+        </li>
+      </ol>
 
       <div class="alert alert-warning">
         <span class="alert-icon">⚠️</span>
-        <div>In <code>ALLOW_USER_PROVIDERS=1</code> mode, user-provided API keys are stored in <strong>browser localStorage</strong>. Advise users not to use this mode on shared devices. For single-user or team deployments, keep <code>ALLOW_USER_PROVIDERS=0</code>.</div>
+        <div><strong>Default mode has no user authentication.</strong> Anyone who can reach your server can use the chat. If deploying publicly, add authentication at the infrastructure level (reverse proxy, cloud access control, etc.).</div>
       </div>
-
-      <span class="section-label">Layer 2</span>
-      <h2 id="ssrf">SSRF Protection</h2>
-      <p>Server-Side Request Forgery (SSRF) allows an attacker to make your server issue requests to unintended targets — such as cloud metadata services, internal databases, or other internal services.</p>
-      <p>Secure Custom AI Chat blocks SSRF with a multi-step validation process before any provider request:</p>
-
-      <div class="security-grid">
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Private IP Blocking</h3>
-          </div>
-          <p>Blocks all RFC 1918 private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, plus CGNAT (100.64.0.0/10), link-local (169.254.0.0/16), loopback (127.0.0.0/8), and multicast/reserved (224.0.0.0+).</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>IPv6 Blocking</h3>
-          </div>
-          <p>Blocks IPv6 loopback (::1), ULA ranges (fc00::/7), link-local (fe80::/10), multicast (ff00::/8), documentation (2001:db8::/32), NAT64 (64:ff9b::/96), and IPv4-mapped IPv6 addresses.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>DNS Resolution Check</h3>
-          </div>
-          <p>Provider hostnames are resolved via DNS before any request is made. If any resolved IP address falls in a private range, the request is blocked — preventing DNS rebinding attacks.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Hostname Blocklist</h3>
-          </div>
-          <p>Known localhost aliases are explicitly blocked: <code>localhost</code>, <code>localhost.localdomain</code>, <code>lvh.me</code>, <code>localtest.me</code>, <code>127.0.0.1</code>, <code>::1</code>.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>No Embedded Credentials</h3>
-          </div>
-          <p>Provider URLs with embedded usernames or passwords (<code>https://user:pass@host/</code>) are rejected to prevent credential injection.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>No Redirect Following</h3>
-          </div>
-          <p>All provider fetch requests use <code>redirect: 'error'</code> — the server does not follow HTTP redirects, preventing redirect-based SSRF bypasses.</p>
-        </div>
-      </div>
-
-      <span class="section-label">Layer 3</span>
-      <h2 id="rate-limiting">Rate Limiting</h2>
-      <p>Two rate-limit tiers protect against abuse:</p>
-      <ul>
-        <li><strong>API limiter</strong> — 120 requests per 60 seconds per IP, applied to all <code>/api/*</code> routes.</li>
-        <li><strong>Chat limiter</strong> — 30 requests per 60 seconds per IP, applied specifically to <code>POST /api/chat</code>.</li>
-      </ul>
-      <p>Rate-limit headers follow the <code>draft-7</code> standard: <code>RateLimit-Limit</code>, <code>RateLimit-Remaining</code>, <code>RateLimit-Reset</code>. Clients that exceed limits receive a <code>429 Too Many Requests</code> JSON response.</p>
-
-      <span class="section-label">Layer 4</span>
-      <h2 id="csp">Content Security Policy</h2>
-      <p>A strict Content Security Policy is applied via Helmet. Key directives:</p>
-      <div class="content">
-        <pre><code>default-src: 'self'
-script-src: 'self' 'unsafe-inline'
-style-src: 'self' 'unsafe-inline'
-img-src: 'self' data: blob:
-connect-src: 'self'
-object-src: 'none'
-frame-ancestors: 'none'
-base-uri: 'self'
-form-action: 'self'
-worker-src: 'self' blob:</code></pre>
-      </div>
-      <p><code>frame-ancestors: 'none'</code> prevents the app from being embedded in iframes (clickjacking protection). <code>object-src: 'none'</code> blocks Flash and similar plugin content. <code>connect-src: 'self'</code> prevents JavaScript from making requests to external URLs.</p>
-
-      <span class="section-label">Layer 5</span>
-      <h2 id="input-sanitization">Input Sanitization</h2>
-      <div class="security-grid">
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Prototype Pollution Prevention</h3>
-          </div>
-          <p>All incoming JSON bodies are deep-sanitized to strip <code>__proto__</code>, <code>constructor</code>, and <code>prototype</code> keys before any processing, preventing prototype pollution attacks.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Request Body Limit</h3>
-          </div>
-          <p>JSON body parser enforces a 2MB limit per request (<code>express.json({ limit: '2mb' })</code>), preventing body-based DoS attacks.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Secret Redaction</h3>
-          </div>
-          <p>All error messages and server logs are sanitized using a regex-based secret redactor that replaces API key values with <code>[REDACTED]</code> before they can appear in responses or logs.</p>
-        </div>
-        <div class="security-item">
-          <div class="security-level">
-            <span class="severity-dot severity-good"></span>
-            <h3>Timeout Protection</h3>
-          </div>
-          <p>All provider requests use a 60-second <code>AbortController</code> timeout. Requests that stall do not hold server connections open indefinitely.</p>
-        </div>
-      </div>
-
-      <span class="section-label">Deployment</span>
-      <h2 id="deployment-security">Deployment Security Recommendations</h2>
-      <div class="alert alert-info">
-        <span class="alert-icon">ℹ️</span>
-        <div>The application has no built-in authentication. For public deployments, add an authentication layer via your reverse proxy.</div>
-      </div>
-      <ul>
-        <li><strong>Run behind HTTPS</strong> — Use a reverse proxy (nginx, Caddy) with TLS. Caddy provides automatic TLS certificates via Let's Encrypt.</li>
-        <li><strong>Add HTTP Basic Auth</strong> — Protect the entire app with basic auth at the proxy level for single-user or team deployments.</li>
-        <li><strong>Deploy behind a VPN</strong> — For maximum security, make the app accessible only within a VPN.</li>
-        <li><strong>Set <code>NODE_ENV=production</code></strong> — Enables production caching and disables development-mode behaviors.</li>
-        <li><strong>Set <code>TRUST_PROXY=1</code></strong> — Required when running behind a reverse proxy so rate limiting uses the real client IP.</li>
-        <li><strong>Keep <code>ALLOW_PRIVATE_PROVIDER_URLS=0</code></strong> — Only enable this in trusted local development environments.</li>
-        <li><strong>Keep dependencies updated</strong> — Run <code>npm audit</code> regularly and update packages to patch known vulnerabilities.</li>
-      </ul>
 
     </div>
   </main>
@@ -254,11 +251,13 @@ worker-src: 'self' blob:</code></pre>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>About — Secure Custom AI Chat</title>
   <meta name="description" content="Secure Custom AI Chat is a self-hosted, server-side proxied chat interface supporting OpenAI, Anthropic, OpenRouter, Groq, Ollama and 12+ AI providers.">
   <meta name="robots" content="index,follow">
@@ -44,7 +45,7 @@
         <div class="nav-logo" aria-hidden="true">✦</div>
         Secure AI Chat
       </a>
-      <ul class="nav-links" role="list">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -53,15 +54,17 @@
         <li><a href="/about" aria-current="page">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
   <header class="hero">
     <div class="hero-badge">About the Project</div>
     <h1>A <span>secure, open</span> AI chat interface</h1>
     <p>Secure Custom AI Chat is a self-hosted chat application that proxies requests to AI providers server-side, protecting your API keys and giving you full control over your AI conversations.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="/">Open Chat App</a>
+      <a class="btn btn-primary" href="/app">Open Chat App</a>
       <a class="btn btn-secondary" href="/features">See All Features</a>
     </div>
   </header>
@@ -220,11 +223,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>

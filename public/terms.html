@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12">
   <title>Terms of Service — Secure Custom AI Chat</title>
-  <meta name="description" content="Terms of service for Secure Custom AI Chat. MIT-licensed open-source software provided as-is. You are responsible for your deployment and API usage.">
+  <meta name="description" content="Terms of service for Secure Custom AI Chat. Read the terms governing use of this software.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://ssblucky7.dev/terms">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Terms of Service — Secure Custom AI Chat">
+  <meta property="og:description" content="Terms of service for Secure Custom AI Chat — self-hosted multi-provider AI chat interface.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ssblucky7.dev/terms">
   <meta property="og:image" content="https://ssblucky7.dev/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terms of Service — Secure Custom AI Chat">
+  <meta name="twitter:image" content="https://ssblucky7.dev/og-image.svg">
   <link rel="stylesheet" href="/page.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+
   <nav class="site-nav" aria-label="Main navigation">
     <div class="nav-inner">
-      <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
-      <ul class="nav-links" role="list">
+      <a class="nav-brand" href="/">
+        <div class="nav-logo" aria-hidden="true">✦</div>
+        Secure AI Chat
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="/features">Features</a></li>
         <li><a href="/providers">Providers</a></li>
         <li><a href="/security">Security</a></li>
@@ -29,69 +37,80 @@
         <li><a href="/about">About</a></li>
         <li><a href="/app" class="nav-cta">Open App</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </nav>
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
   <header class="hero">
     <div class="hero-badge">Legal</div>
     <h1>Terms of <span>Service</span></h1>
-    <p>Last updated: January 2025. These terms apply to the Secure Custom AI Chat software and any self-hosted instance.</p>
+    <p>Last updated: August 2025. These terms govern your use of Secure Custom AI Chat.</p>
+    <div class="hero-actions">
+      <a class="btn btn-secondary" href="/privacy">Privacy Policy</a>
+    </div>
   </header>
+
   <main id="main">
     <div class="content">
 
-      <h2 id="license">MIT License</h2>
-      <p>Secure Custom AI Chat is open-source software released under the <strong>MIT License</strong>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the following conditions:</p>
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ️</span>
+        <div>Secure Custom AI Chat is provided as open-source software under the MIT License. These terms supplement the license and describe acceptable use of the application.</div>
+      </div>
+
+      <h2 id="license">License</h2>
+      <p>Secure Custom AI Chat is released under the <strong>MIT License</strong>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the conditions of the license.</p>
+      <p>The software is provided "as is", without warranty of any kind, express or implied. See the MIT License for full details.</p>
+
+      <h2 id="acceptable-use">Acceptable Use</h2>
+      <p>By using this application, you agree to:</p>
       <ul>
-        <li>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</li>
-        <li>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</li>
+        <li>Comply with all applicable laws and regulations in your jurisdiction</li>
+        <li>Use the application only for lawful purposes</li>
+        <li>Not use the application to generate harmful, illegal, or abusive content</li>
+        <li>Respect the terms of service of any AI providers you configure</li>
+        <li>Maintain the security of your deployment if you host it publicly</li>
       </ul>
 
-      <h2 id="use">Permitted Use</h2>
-      <p>You may use this software for any lawful purpose, including personal use, commercial use, and organizational use. You may self-host, modify, and redistribute the software.</p>
-      <p>You are responsible for:</p>
-      <ul>
-        <li>Securing your deployment (authentication, HTTPS, access controls).</li>
-        <li>Complying with the terms of service of AI providers you use (OpenAI, Anthropic, etc.).</li>
-        <li>Ensuring users of your deployment comply with applicable laws and provider policies.</li>
-        <li>Protecting API keys and credentials you configure.</li>
-        <li>Any data processing that occurs on your deployment.</li>
-      </ul>
+      <h2 id="api-costs">API Costs</h2>
+      <p>You are solely responsible for all costs incurred when using AI provider APIs. Secure Custom AI Chat does not charge any fees. API costs are determined by the providers you configure (e.g., OpenAI, Anthropic, Groq).</p>
+      <p>The application may include rate limiting to help manage costs, but you should monitor your own usage with each provider.</p>
 
-      <h2 id="prohibited">Prohibited Use</h2>
-      <p>You may not use this software to:</p>
+      <h2 id="no-guarantee">No Guarantees</h2>
+      <p>The application is provided without any guarantees of:</p>
       <ul>
-        <li>Circumvent or abuse AI provider rate limits or terms of service in a fraudulent manner.</li>
-        <li>Generate illegal content, malware, or content that violates applicable laws.</li>
-        <li>Conduct unauthorized access to systems or networks.</li>
-        <li>Violate the privacy rights of others.</li>
+        <li>Continuous availability or uptime</li>
+        <li>Accuracy of AI-generated responses</li>
+        <li>Suitability for any particular purpose</li>
+        <li>Freedom from bugs or security vulnerabilities</li>
       </ul>
+      <p>You use the application at your own risk.</p>
 
-      <h2 id="disclaimer">Disclaimer of Warranties</h2>
-      <p>The software is provided "as-is" and "as available" without any warranty of any kind. The authors and contributors of Secure Custom AI Chat make no warranties, express or implied, including but not limited to:</p>
-      <ul>
-        <li>Fitness for a particular purpose.</li>
-        <li>Merchantability.</li>
-        <li>Non-infringement.</li>
-        <li>Security of the software or any deployment.</li>
-        <li>Availability, reliability, or accuracy of any AI provider accessed through the software.</li>
-      </ul>
-
-      <h2 id="liability">Limitation of Liability</h2>
-      <p>To the maximum extent permitted by applicable law, in no event shall the authors or contributors be liable for any indirect, incidental, special, exemplary, or consequential damages (including but not limited to loss of data, loss of profits, or business interruption) arising out of or in connection with the use of this software.</p>
+      <h2 id="limitation">Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, the developers of Secure Custom AI Chat shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the application.</p>
+      <p>This includes but is not limited to: API costs, data loss, security breaches, or unauthorized access to your system.</p>
 
       <h2 id="third-party">Third-Party Services</h2>
-      <p>This software connects to third-party AI providers chosen by you. Use of those providers is governed by their own terms of service and privacy policies. The software authors are not responsible for the availability, accuracy, or content of third-party AI services.</p>
+      <p>Secure Custom AI Chat may interface with third-party AI providers. Your use of these services is governed by their respective terms of service and privacy policies. The developers of Secure Custom AI Chat are not responsible for the practices of third-party providers.</p>
 
-      <h2 id="changes">Changes</h2>
-      <p>As open-source software, these terms apply to the default software distribution. Operators who deploy the software for others may establish additional terms for their specific deployments.</p>
+      <h2 id="changes">Changes to Terms</h2>
+      <p>These terms may be updated periodically. Continued use of the application after changes constitutes acceptance of the updated terms.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>For questions about these terms, please open an issue on the <a href="https://github.com/ssblucky7/Secure-Custom-AI-Chat" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>
 
     </div>
   </main>
+
   <footer class="site-footer" aria-label="Site footer">
     <div class="footer-inner">
       <div class="footer-grid">
         <div class="footer-brand-block">
-          <a class="nav-brand" href="/"><div class="nav-logo" aria-hidden="true">✦</div>Secure AI Chat</a>
+          <a class="nav-brand" href="/">
+            <div class="nav-logo" aria-hidden="true">✦</div>
+            Secure AI Chat
+          </a>
           <p>Self-hosted, server-side proxied AI chat. Works with OpenAI, Anthropic, OpenRouter, Groq, Ollama and more.</p>
         </div>
         <div class="footer-col">
@@ -120,11 +139,13 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2025 Secure Custom AI Chat. MIT License.</span>
+        <span>© 2026 Secure Custom AI Chat. MIT License.</span>
         <span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a> · <a href="/app">Open App</a></span>
       </div>
-      <div class="developer-credit">Developed by  <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
+      <div class="developer-credit">Developed by <a href="https://github.com/ssblucky7" target="_blank" rel="noopener noreferrer">S.S.B Lucky 7</a></div>
     </div>
   </footer>
+
+  <script src="/nav.js" defer></script>
 </body>
 </html>
